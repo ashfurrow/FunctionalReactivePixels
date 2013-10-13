@@ -8,6 +8,8 @@
 
 #import "FRPGalleryViewController.h"
 #import "FRPCell.h"
+#import "FRPGalleryFlowLayout.h"
+#import "FRPPhotoImporter.h"
 
 static NSString *CellIdentifier = @"Cell";
 
@@ -21,15 +23,10 @@ static NSString *CellIdentifier = @"Cell";
 
 - (id)init
 {
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    FRPGalleryFlowLayout *flowLayout = [[FRPGalleryFlowLayout alloc] init];
     
     self = [super initWithCollectionViewLayout:flowLayout];
     if (!self) return nil;
-    
-    flowLayout.itemSize = CGSizeMake(145, 145);
-    flowLayout.minimumInteritemSpacing = 10;
-    flowLayout.minimumLineSpacing = 10;
-    flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     
     return self;
 }
@@ -52,23 +49,17 @@ static NSString *CellIdentifier = @"Cell";
         [self.collectionView reloadData];
     }];
     
+    // Load data
     [self loadPopularPhotos];
 }
 
 #pragma mark - Private Methods
 
 -(void)loadPopularPhotos {
-    NSURLRequest *request = [AppDelegate.apiHelper urlRequestForPhotoFeature:PXAPIHelperPhotoFeaturePopular resultsPerPage:100 page:1 photoSizes:PXPhotoModelSizeThumbnail sortOrder:PXAPIHelperSortOrderRating except:PXPhotoModelCategoryNude];
-    
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        if (data) {
-            id results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            
-            self.photosArray = results[@"photos"];
-        }
-        else {
-            NSLog(@"Couldn't fetch from 500px: %@", connectionError);
-        }
+    [[FRPPhotoImporter importPhotos] subscribeNext:^(id x) {
+        self.photosArray = x;
+    } error:^(NSError *error) {
+        NSLog(@"Couldn't fetch photos from 500px: %@", error);
     }];
 }
 
