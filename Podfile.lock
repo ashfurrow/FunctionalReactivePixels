@@ -1,0 +1,18 @@
+PODS:
+  - 500px-iOS-api (1.0.4)
+  - ReactiveCocoa (2.1):
+    - ReactiveCocoa/Core
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/Core (2.1):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.1)
+
+DEPENDENCIES:
+  - 500px-iOS-api (= 1.0.4)
+  - ReactiveCocoa (= 2.1)
+
+SPEC CHECKSUMS:
+  500px-iOS-api: fde71ddd4a05f06b94b8ec7c29bbcd2e589b7e70
+  ReactiveCocoa: b686fa735c28c2dc7311fbd2f0895b4d4ae07360
+
+COCOAPODS: 0.25.0
