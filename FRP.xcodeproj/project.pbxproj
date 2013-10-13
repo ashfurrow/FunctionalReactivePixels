@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2826EB375D254DDD8DE6EAA8 /* libPods-FRP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 772BE9E4C5824F1C8E5CDC45 /* libPods-FRP.a */; };
+		5EBC599E180B247500B683A7 /* FRPCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC599D180B247500B683A7 /* FRPCell.m */; };
 		5EBE2AF5180B07D0007B6BF3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EBE2AF4180B07D0007B6BF3 /* Foundation.framework */; };
 		5EBE2AF7180B07D0007B6BF3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EBE2AF6180B07D0007B6BF3 /* CoreGraphics.framework */; };
 		5EBE2AF9180B07D0007B6BF3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EBE2AF8180B07D0007B6BF3 /* UIKit.framework */; };
@@ -21,6 +22,7 @@
 		5EBE2B16180B07D0007B6BF3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EBE2AFA180B07D0007B6BF3 /* CoreData.framework */; };
 		5EBE2B1E180B07D0007B6BF3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5EBE2B1C180B07D0007B6BF3 /* InfoPlist.strings */; };
 		5EBE2B20180B07D0007B6BF3 /* FRPTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBE2B1F180B07D0007B6BF3 /* FRPTests.m */; };
+		5EBE2B2B180B0AF1007B6BF3 /* FRPGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBE2B2A180B0AF1007B6BF3 /* FRPGalleryViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5EBC599C180B247500B683A7 /* FRPCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPCell.h; sourceTree = "<group>"; };
+		5EBC599D180B247500B683A7 /* FRPCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPCell.m; sourceTree = "<group>"; };
 		5EBE2AF1180B07D0007B6BF3 /* FRP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FRP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EBE2AF4180B07D0007B6BF3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5EBE2AF6180B07D0007B6BF3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -51,6 +55,8 @@
 		5EBE2B1B180B07D0007B6BF3 /* FRPTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FRPTests-Info.plist"; sourceTree = "<group>"; };
 		5EBE2B1D180B07D0007B6BF3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5EBE2B1F180B07D0007B6BF3 /* FRPTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FRPTests.m; sourceTree = "<group>"; };
+		5EBE2B29180B0AF1007B6BF3 /* FRPGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPGalleryViewController.h; sourceTree = "<group>"; };
+		5EBE2B2A180B0AF1007B6BF3 /* FRPGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPGalleryViewController.m; sourceTree = "<group>"; };
 		772BE9E4C5824F1C8E5CDC45 /* libPods-FRP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FRP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6C5FA73F5F4703A3C7C4C0 /* Pods-FRP.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FRP.xcconfig"; path = "Pods/Pods-FRP.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,6 +125,10 @@
 			children = (
 				5EBE2B05180B07D0007B6BF3 /* FRPAppDelegate.h */,
 				5EBE2B06180B07D0007B6BF3 /* FRPAppDelegate.m */,
+				5EBE2B29180B0AF1007B6BF3 /* FRPGalleryViewController.h */,
+				5EBE2B2A180B0AF1007B6BF3 /* FRPGalleryViewController.m */,
+				5EBC599C180B247500B683A7 /* FRPCell.h */,
+				5EBC599D180B247500B683A7 /* FRPCell.m */,
 				5EBE2B0B180B07D0007B6BF3 /* Images.xcassets */,
 				5EBE2AFD180B07D0007B6BF3 /* Supporting Files */,
 			);
@@ -285,7 +295,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EBC599E180B247500B683A7 /* FRPCell.m in Sources */,
 				5EBE2B03180B07D0007B6BF3 /* main.m in Sources */,
+				5EBE2B2B180B0AF1007B6BF3 /* FRPGalleryViewController.m in Sources */,
 				5EBE2B07180B07D0007B6BF3 /* FRPAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
