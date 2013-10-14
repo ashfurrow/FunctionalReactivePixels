@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2826EB375D254DDD8DE6EAA8 /* libPods-FRP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 772BE9E4C5824F1C8E5CDC45 /* libPods-FRP.a */; };
 		5EBC599E180B247500B683A7 /* FRPCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC599D180B247500B683A7 /* FRPCell.m */; };
-		5EBC59A2180B268600B683A7 /* FRPPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC59A1180B268600B683A7 /* FRPPhotoModel.m */; };
 		5EBC59A6180B2AA200B683A7 /* FRPPhotoImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC59A5180B2AA200B683A7 /* FRPPhotoImporter.m */; };
 		5EBC59A9180B2C4F00B683A7 /* FRPGalleryFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC59A8180B2C4F00B683A7 /* FRPGalleryFlowLayout.m */; };
 		5EBE2AF5180B07D0007B6BF3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EBE2AF4180B07D0007B6BF3 /* Foundation.framework */; };
@@ -326,7 +325,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5EBC59A2180B268600B683A7 /* FRPPhotoModel.m in Sources */,
 				5EBC599E180B247500B683A7 /* FRPCell.m in Sources */,
 				5EBC59A9180B2C4F00B683A7 /* FRPGalleryFlowLayout.m in Sources */,
 				5EBE2B03180B07D0007B6BF3 /* main.m in Sources */,

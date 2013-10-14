@@ -25,7 +25,7 @@ static NSString *CellIdentifier = @"Cell";
 {
     FRPGalleryFlowLayout *flowLayout = [[FRPGalleryFlowLayout alloc] init];
     
-    self = [super initWithCollectionViewLayout:flowLayout];
+    self = [self initWithCollectionViewLayout:flowLayout];
     if (!self) return nil;
     
     return self;
@@ -72,7 +72,7 @@ static NSString *CellIdentifier = @"Cell";
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FRPCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.backgroundColor = [UIColor purpleColor];
+    [cell setPhotoModel:self.photosArray[indexPath.row]];
     
     return cell;
 }

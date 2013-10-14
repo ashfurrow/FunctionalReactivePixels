@@ -7,25 +7,46 @@
 //
 
 #import "FRPCell.h"
+#import "FRPPhotoModel.m"
+
+@interface FRPCell ()
+
+@property (nonatomic, weak) UIImageView *imageView;
+@property (nonatomic, strong) RACDisposable *subscription;
+
+@end
 
 @implementation FRPCell
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
+    if (!self) return nil;
+    
+    // Configure self
+    self.backgroundColor = [UIColor darkGrayColor];
+    
+    // Configure subivews
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+    imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    [self.contentView addSubview:imageView];
+    self.imageView = imageView;
+    
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+-(void)prepareForReuse {
+    [super prepareForReuse];
+    
+    [self.subscription dispose], self.subscription = nil;
 }
-*/
+
+-(void)setPhotoModel:(FRPPhotoModel *)photoModel {
+    self.subscription = [[[RACObserve(photoModel, thumbnailData) filter:^BOOL(id value) {
+        return ![value isKindOfClass:[NSNull class]];
+    }] map:^id(id value) {
+        return [UIImage imageWithData:value];
+    }] setKeyPath:@"image" onObject:self.imageView];
+}
 
 @end

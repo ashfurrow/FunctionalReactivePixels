@@ -25,13 +25,14 @@
         if (data) {
             id results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             
-            [subject sendNext:[[results[@"photos"] rac_sequence] map:^id(NSDictionary *photoDictionary) {
+            [subject sendNext:[[[results[@"photos"] rac_sequence] map:^id(NSDictionary *photoDictionary) {
                 FRPPhotoModel *model = [FRPPhotoModel new];
                 
-                //TODO: Set properties
+                [self configurePhotoModel:model withDictionary:photoDictionary];
+                [self downloadThumbnailForPhotoModel:model];
                 
                 return model;
-            }]];
+            }] array]];
             [subject sendCompleted];
         }
         else {
@@ -40,6 +41,20 @@
     }];
     
     return subject;
+}
+
++(void)configurePhotoModel:(FRPPhotoModel *)photoModel withDictionary:(NSDictionary *)dictionary {
+    photoModel.photoName = dictionary[@"name"];
+    photoModel.photographerName = dictionary[@"user"][@"username"];
+    photoModel.rating = dictionary[@"rating"];
+    photoModel.thumbnailURL = [dictionary[@"image_url"] firstObject];
+}
+
++(void)downloadThumbnailForPhotoModel:(FRPPhotoModel *)photoModel {
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:photoModel.thumbnailURL]];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        photoModel.thumbnailData = data;
+    }];
 }
 
 @end
