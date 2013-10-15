@@ -12,7 +12,7 @@
 @interface FRPCell ()
 
 @property (nonatomic, weak) UIImageView *imageView;
-@property (nonatomic, strong) RACDisposable *subscription;
+@property (nonatomic, weak) RACDisposable *subscription;
 
 @end
 
@@ -38,7 +38,7 @@
 -(void)prepareForReuse {
     [super prepareForReuse];
     
-    [self.subscription dispose], self.subscription = nil;
+    [self.subscription dispose];
 }
 
 -(void)setPhotoModel:(FRPPhotoModel *)photoModel {
@@ -46,7 +46,7 @@
         return ![value isKindOfClass:[NSNull class]];
     }] map:^id(id value) {
         return [UIImage imageWithData:value];
-    }] setKeyPath:@"image" onObject:self.imageView];
+    }] setKeyPath:@keypath(self.imageView, image) onObject:self.imageView];
 }
 
 @end
