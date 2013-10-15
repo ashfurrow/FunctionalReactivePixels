@@ -12,7 +12,8 @@
 @interface FRPCell ()
 
 @property (nonatomic, weak) UIImageView *imageView;
-@property (nonatomic, weak) RACDisposable *subscription;
+// Note: This needs to be strong 
+@property (nonatomic, strong) RACDisposable *subscription;
 
 @end
 
@@ -38,7 +39,7 @@
 -(void)prepareForReuse {
     [super prepareForReuse];
     
-    [self.subscription dispose];
+    [self.subscription dispose], self.subscription = nil;
 }
 
 -(void)setPhotoModel:(FRPPhotoModel *)photoModel {
