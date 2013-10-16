@@ -11,15 +11,18 @@
 
 @implementation FRPPhotoImporter
 
-+(NSURLRequest *)urlRequest {
++(NSURLRequest *)popularURLRequest {
     return [AppDelegate.apiHelper urlRequestForPhotoFeature:PXAPIHelperPhotoFeaturePopular resultsPerPage:100 page:1 photoSizes:PXPhotoModelSizeThumbnail sortOrder:PXAPIHelperSortOrderRating except:PXPhotoModelCategoryNude];
+}
+
++(NSURLRequest *)photoURLRequest:(FRPPhotoModel *)photoModel {
+    return [AppDelegate.apiHelper urlRequestForPhotoID:photoModel.identifier.integerValue];
 }
 
 +(RACSubject *)importPhotos {
     RACSubject *subject = [RACSubject subject];
     
-    
-    NSURLRequest *request = [self urlRequest];
+    NSURLRequest *request = [self popularURLRequest];
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (data) {
@@ -43,17 +46,75 @@
     return subject;
 }
 
++(RACSubject *)fetchPhotoDetails:(FRPPhotoModel *)photoModel {
+    RACSubject *subject = [RACSubject subject];
+    
+    NSURLRequest *request = [self photoURLRequest:photoModel];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (data) {
+            id results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil][@"photo"];
+            
+            [self configurePhotoModel:photoModel withDictionary:results];
+            [self downloadFullsizedImageForPhotoModel:photoModel];
+            
+            [subject sendNext:photoModel];
+            [subject sendCompleted];
+        }
+        else {
+            [subject sendError:connectionError];
+        }
+    }];
+    
+    return subject;
+}
+
 +(void)configurePhotoModel:(FRPPhotoModel *)photoModel withDictionary:(NSDictionary *)dictionary {
+    // Basics details fetched with the first, basic request
     photoModel.photoName = dictionary[@"name"];
+    photoModel.identifier = dictionary[@"id"];
     photoModel.photographerName = dictionary[@"user"][@"username"];
     photoModel.rating = dictionary[@"rating"];
-    photoModel.thumbnailURL = [dictionary[@"image_url"] firstObject];
+
+    photoModel.thumbnailURL = [self urlForImageSize:3 inDictionary:dictionary[@"images"]];
+    
+    // Extneded attributes fetched with subsequent request
+    if (dictionary[@"comments_count"]) {
+        photoModel.fullsizedURL = [self urlForImageSize:4 inDictionary:dictionary[@"images"]];
+    }
+}
+
++(NSString *)urlForImageSize:(NSInteger)size inDictionary:(NSDictionary *)dictioary {
+    /*
+     images =     (
+     {
+     size = 3;
+     url = "http://ppcdn.500px.org/49204370/b125a49d0863e0ba05d8196072b055876159f33e/3.jpg";
+     }
+     );
+     */
+    
+    return [[[[[dictioary rac_sequence] filter:^BOOL(NSDictionary *value) {
+        return [value[@"size"] integerValue] == size;
+    }] map:^id(id value) {
+        return value[@"url"];
+    }] array] firstObject];
 }
 
 +(void)downloadThumbnailForPhotoModel:(FRPPhotoModel *)photoModel {
+    NSAssert(photoModel.thumbnailURL, @"Thumbnail URL must not be nil");
+    
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:photoModel.thumbnailURL]];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         photoModel.thumbnailData = data;
+    }];
+}
+
++(void)downloadFullsizedImageForPhotoModel:(FRPPhotoModel *)photoModel {
+    NSAssert(photoModel.fullsizedURL, @"Full sized URL must not be nil");
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:photoModel.fullsizedURL]];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        photoModel.fullsizedData = data;
     }];
 }
 

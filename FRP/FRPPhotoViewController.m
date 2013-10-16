@@ -11,6 +11,10 @@
 // Model
 #import "FRPPhotoModel.h"
 
+// Utilities
+#import "FRPPhotoImporter.h"
+#import <SVProgressHUD.h>
+
 @interface FRPPhotoViewController ()
 
 // Private assignment
@@ -35,7 +39,7 @@
     return self;
 }
 
-- (void)viewDidLoad
+-(void)viewDidLoad
 {
     [super viewDidLoad];
     
@@ -47,14 +51,22 @@
     RAC(imageView, image) = [RACObserve(self.photoModel, fullsizedData) map:^id(id value) {
         return [UIImage imageWithData:value];
     }];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:imageView];
     self.imageView = imageView;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [SVProgressHUD show];
+    
+    // Fetch data
+    [[FRPPhotoImporter fetchPhotoDetails:self.photoModel] subscribeError:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"Error"];
+    } completed:^{
+        [SVProgressHUD dismiss];
+    }];
 }
 
 @end

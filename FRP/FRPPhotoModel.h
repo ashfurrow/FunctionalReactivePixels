@@ -11,6 +11,7 @@
 @interface FRPPhotoModel : NSObject
 
 @property (nonatomic, strong) NSString *photoName;
+@property (nonatomic, strong) NSNumber *identifier;
 @property (nonatomic, strong) NSString *photographerName;
 @property (nonatomic, strong) NSNumber *rating;
 @property (nonatomic, strong) NSString *thumbnailURL;
