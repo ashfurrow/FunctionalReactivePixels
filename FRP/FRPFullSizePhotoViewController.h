@@ -13,6 +13,5 @@
 -(instancetype)initWithPhotoModels:(NSArray *)photoModelArray currentPhotoIndex:(NSInteger)photoIndex;
 
 @property (nonatomic, readonly) NSArray *photoModelArray;
-@property (nonatomic, readonly) NSInteger photoIndex;
 
 @end

@@ -10,11 +10,13 @@
 #import "FRPFullSizePhotoViewController.h"
 #import "FRPPhotoViewController.h"
 
-@interface FRPFullSizePhotoViewController () <UIPageViewControllerDataSource>
+// Models
+#import "FRPPhotoModel.h"
+
+@interface FRPFullSizePhotoViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 // Private assignment
 @property (nonatomic, strong) NSArray *photoModelArray;
-@property (nonatomic, assign) NSInteger photoIndex;
 
 // Private properties
 @property (nonatomic, strong) UIPageViewController *pageViewController;
@@ -30,11 +32,14 @@
     
     // Initialized, read-only properties
     self.photoModelArray = photoModelArray;
-    self.photoIndex = photoIndex;
+    
+    // Configure self
+    self.title = [self.photoModelArray[photoIndex] photoName];
     
     // View controllers
     self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:@{UIPageViewControllerOptionInterPageSpacingKey: @(30)}];
     self.pageViewController.dataSource = self;
+    self.pageViewController.delegate = self;
     [self addChildViewController:self.pageViewController];
     
     [self.pageViewController setViewControllers:@[[self photoViewControllerForIndex:photoIndex]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
@@ -66,6 +71,12 @@
     
     // Index was out of bounds, return nil
     return nil;
+}
+
+#pragma mark - UIPageViewControllerDelegate Methods 
+
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
+    self.title = [[self.pageViewController.viewControllers.firstObject photoModel] photoName];
 }
 
 #pragma mark - UIPageViewControllerDataSource Methods
