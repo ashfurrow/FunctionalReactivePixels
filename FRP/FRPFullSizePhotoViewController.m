@@ -9,6 +9,7 @@
 // View Controllers
 #import "FRPFullSizePhotoViewController.h"
 #import "FRPPhotoViewController.h"
+#import "FRPPhotoDetailViewController.h"
 
 // Models
 #import "FRPPhotoModel.h"
@@ -51,6 +52,21 @@
 {
     [super viewDidLoad];
     
+    // Configure self
+    @weakify(self);
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
+    infoButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self);
+        
+        FRPPhotoDetailViewController *viewController = [[FRPPhotoDetailViewController alloc] init];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+        
+        [self presentViewController:navigationController animated:YES completion:nil];
+        
+        return [RACSignal empty];
+    }];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+    
     // Configure self's view
     self.view.backgroundColor = [UIColor blackColor];
     
@@ -60,6 +76,7 @@
 }
 
 #pragma mark - Private Methods
+
 
 -(FRPPhotoViewController *)photoViewControllerForIndex:(NSInteger)index {
     if (index >= 0 && index < self.photoModelArray.count) {
