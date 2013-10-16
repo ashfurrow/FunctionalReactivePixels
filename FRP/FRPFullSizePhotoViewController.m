@@ -77,6 +77,7 @@
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
     self.title = [[self.pageViewController.viewControllers.firstObject photoModel] photoName];
+    [self.delegate userDidScroll:self toPhotoAtIndex:[self.pageViewController.viewControllers.firstObject photoIndex]];
 }
 
 #pragma mark - UIPageViewControllerDataSource Methods

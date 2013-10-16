@@ -19,7 +19,7 @@
 
 static NSString *CellIdentifier = @"Cell";
 
-@interface FRPGalleryViewController ()
+@interface FRPGalleryViewController () <FRPFullSizePhotoViewControllerDelegate>
 
 @property (nonatomic, strong) NSArray *photosArray;
 
@@ -88,7 +88,14 @@ static NSString *CellIdentifier = @"Cell";
 // Note: Can't use rac_signalForSelector: here w/o implementing this method.
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     FRPFullSizePhotoViewController *viewController = [[FRPFullSizePhotoViewController alloc] initWithPhotoModels:self.photosArray currentPhotoIndex:indexPath.item];
+    viewController.delegate = self;
     [self.navigationController pushViewController:viewController animated:YES];
+}
+
+#pragma mark - FRPFullSizePhotoViewControllerDelegate Methods
+
+-(void)userDidScroll:(FRPFullSizePhotoViewController *)viewController toPhotoAtIndex:(NSInteger)index {
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:NO];
 }
 
 @end
