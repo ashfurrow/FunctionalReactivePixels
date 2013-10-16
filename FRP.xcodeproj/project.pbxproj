@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2826EB375D254DDD8DE6EAA8 /* libPods-FRP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 772BE9E4C5824F1C8E5CDC45 /* libPods-FRP.a */; };
+		5E595111180E065F002F44FA /* FRPFullSizePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E595110180E065F002F44FA /* FRPFullSizePhotoViewController.m */; };
+		5E595117180E0C33002F44FA /* FRPPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E595116180E0C33002F44FA /* FRPPhotoViewController.m */; };
 		5EBC599E180B247500B683A7 /* FRPCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC599D180B247500B683A7 /* FRPCell.m */; };
 		5EBC59A6180B2AA200B683A7 /* FRPPhotoImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC59A5180B2AA200B683A7 /* FRPPhotoImporter.m */; };
 		5EBC59A9180B2C4F00B683A7 /* FRPGalleryFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC59A8180B2C4F00B683A7 /* FRPGalleryFlowLayout.m */; };
@@ -38,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E59510F180E065F002F44FA /* FRPFullSizePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPFullSizePhotoViewController.h; sourceTree = "<group>"; };
+		5E595110180E065F002F44FA /* FRPFullSizePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPFullSizePhotoViewController.m; sourceTree = "<group>"; };
+		5E595115180E0C33002F44FA /* FRPPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPPhotoViewController.h; sourceTree = "<group>"; };
+		5E595116180E0C33002F44FA /* FRPPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPPhotoViewController.m; sourceTree = "<group>"; };
 		5EBC599C180B247500B683A7 /* FRPCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPCell.h; sourceTree = "<group>"; };
 		5EBC599D180B247500B683A7 /* FRPCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPCell.m; sourceTree = "<group>"; };
 		5EBC59A0180B268600B683A7 /* FRPPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPPhotoModel.h; sourceTree = "<group>"; };
@@ -95,6 +101,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E59510E180E0634002F44FA /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5EBE2B29180B0AF1007B6BF3 /* FRPGalleryViewController.h */,
+				5EBE2B2A180B0AF1007B6BF3 /* FRPGalleryViewController.m */,
+				5E59510F180E065F002F44FA /* FRPFullSizePhotoViewController.h */,
+				5E595110180E065F002F44FA /* FRPFullSizePhotoViewController.m */,
+				5E595115180E0C33002F44FA /* FRPPhotoViewController.h */,
+				5E595116180E0C33002F44FA /* FRPPhotoViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		5EBC599F180B267400B683A7 /* UICollectionView Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,10 +172,9 @@
 			children = (
 				5EBE2B05180B07D0007B6BF3 /* FRPAppDelegate.h */,
 				5EBE2B06180B07D0007B6BF3 /* FRPAppDelegate.m */,
-				5EBE2B29180B0AF1007B6BF3 /* FRPGalleryViewController.h */,
-				5EBE2B2A180B0AF1007B6BF3 /* FRPGalleryViewController.m */,
 				5EBC59A4180B2AA200B683A7 /* FRPPhotoImporter.h */,
 				5EBC59A5180B2AA200B683A7 /* FRPPhotoImporter.m */,
+				5E59510E180E0634002F44FA /* View Controllers */,
 				5EBC59A3180B268A00B683A7 /* Models */,
 				5EBC599F180B267400B683A7 /* UICollectionView Extensions */,
 				5EBE2B0B180B07D0007B6BF3 /* Images.xcassets */,
@@ -326,8 +344,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EBC599E180B247500B683A7 /* FRPCell.m in Sources */,
+				5E595111180E065F002F44FA /* FRPFullSizePhotoViewController.m in Sources */,
 				5EBC59A9180B2C4F00B683A7 /* FRPGalleryFlowLayout.m in Sources */,
 				5EBE2B03180B07D0007B6BF3 /* main.m in Sources */,
+				5E595117180E0C33002F44FA /* FRPPhotoViewController.m in Sources */,
 				5EBC59A6180B2AA200B683A7 /* FRPPhotoImporter.m in Sources */,
 				5EBE2B2B180B0AF1007B6BF3 /* FRPGalleryViewController.m in Sources */,
 				5EBE2B07180B07D0007B6BF3 /* FRPAppDelegate.m in Sources */,

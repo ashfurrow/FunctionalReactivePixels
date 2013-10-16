@@ -6,8 +6,14 @@
 //  Copyright (c) 2013 Ash Furrow. All rights reserved.
 //
 
+// View Controllers
 #import "FRPGalleryViewController.h"
+#import "FRPFullSizePhotoViewController.h"
+
+// Views
 #import "FRPCell.h"
+
+// Utilities
 #import "FRPGalleryFlowLayout.h"
 #import "FRPPhotoImporter.h"
 
@@ -75,6 +81,14 @@ static NSString *CellIdentifier = @"Cell";
     [cell setPhotoModel:self.photosArray[indexPath.row]];
     
     return cell;
+}
+
+#pragma mark - UICollectionViewDelegate Methods
+
+// Note: Can't use rac_signalForSelector: here w/o implementing this method.
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    FRPFullSizePhotoViewController *viewController = [[FRPFullSizePhotoViewController alloc] initWithPhotoModels:self.photosArray currentPhotoIndex:indexPath.item];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end
