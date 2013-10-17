@@ -58,7 +58,7 @@
     infoButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         @strongify(self);
         
-        FRPPhotoDetailViewController *viewController = [[FRPPhotoDetailViewController alloc] init];
+        FRPPhotoDetailViewController *viewController = [[FRPPhotoDetailViewController alloc] initWithPhotoModel:[self.pageViewController.viewControllers.firstObject photoModel]];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
         
         [self presentViewController:navigationController animated:YES completion:nil];

@@ -59,14 +59,16 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [SVProgressHUD show];
-    
-    // Fetch data
-    [[FRPPhotoImporter fetchPhotoDetails:self.photoModel] subscribeError:^(NSError *error) {
-        [SVProgressHUD showErrorWithStatus:@"Error"];
-    } completed:^{
-        [SVProgressHUD dismiss];
-    }];
+    if (!self.presentedViewController) {
+        [SVProgressHUD show];
+        
+        // Fetch data
+        [[FRPPhotoImporter fetchPhotoDetails:self.photoModel] subscribeError:^(NSError *error) {
+            [SVProgressHUD showErrorWithStatus:@"Error"];
+        } completed:^{
+            [SVProgressHUD dismiss];
+        }];
+    }
 }
 
 @end
