@@ -44,7 +44,7 @@
 
 -(void)setPhotoModel:(FRPPhotoModel *)photoModel {
     self.subscription = [[[RACObserve(photoModel, thumbnailData) filter:^BOOL(id value) {
-        return ![value isKindOfClass:[NSNull class]];
+        return value != nil;
     }] map:^id(id value) {
         return [UIImage imageWithData:value];
     }] setKeyPath:@keypath(self.imageView, image) onObject:self.imageView];
