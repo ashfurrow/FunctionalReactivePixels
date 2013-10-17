@@ -13,4 +13,4 @@ Please don't go all creepy with my consumer key.
 
 Installing
 ----------------
-Clone the repo and run `pod install` from the repo's directory to install the required pods. 
+Clone the repo and run `pod install` from the repo's directory to install the required pods. Or if you don't like Cocoapods, just [download the zip](http://cloud.ashfurrow.com/013J0y1R3L2l).
