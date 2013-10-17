@@ -12,8 +12,9 @@
 
 @interface FRPPhotoImporter : NSObject
 
-+(RACSubject *)importPhotos;
+// Note: we're using RACSignal as the declared return type, even though it's a RACSubject
++(RACSignal *)importPhotos;
 
-+(RACSubject *)fetchPhotoDetails:(FRPPhotoModel *)photoModel;
++(RACSignal *)fetchPhotoDetails:(FRPPhotoModel *)photoModel;
 
 @end

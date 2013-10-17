@@ -77,13 +77,13 @@
 
     photoModel.thumbnailURL = [self urlForImageSize:3 inDictionary:dictionary[@"images"]];
     
-    // Extneded attributes fetched with subsequent request
+    // Extended attributes fetched with subsequent request
     if (dictionary[@"comments_count"]) {
         photoModel.fullsizedURL = [self urlForImageSize:4 inDictionary:dictionary[@"images"]];
     }
 }
 
-+(NSString *)urlForImageSize:(NSInteger)size inDictionary:(NSDictionary *)dictioary {
++(NSString *)urlForImageSize:(NSInteger)size inDictionary:(NSDictionary *)dictionary {
     /*
      images =     (
      {
@@ -93,7 +93,7 @@
      );
      */
     
-    return [[[[[dictioary rac_sequence] filter:^BOOL(NSDictionary *value) {
+    return [[[[[dictionary rac_sequence] filter:^BOOL(NSDictionary *value) {
         return [value[@"size"] integerValue] == size;
     }] map:^id(id value) {
         return value[@"url"];
