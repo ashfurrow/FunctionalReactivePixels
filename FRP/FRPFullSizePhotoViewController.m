@@ -77,7 +77,6 @@
 
 #pragma mark - Private Methods
 
-
 -(FRPPhotoViewController *)photoViewControllerForIndex:(NSInteger)index {
     if (index >= 0 && index < self.photoModelArray.count) {
         FRPPhotoModel *photoModel = self.photoModelArray[index];

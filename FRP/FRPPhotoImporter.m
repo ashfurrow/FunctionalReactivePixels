@@ -101,20 +101,25 @@
 }
 
 +(void)downloadThumbnailForPhotoModel:(FRPPhotoModel *)photoModel {
-    NSAssert(photoModel.thumbnailURL, @"Thumbnail URL must not be nil");
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:photoModel.thumbnailURL]];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+    [self download:photoModel.thumbnailURL withCompletion:^(NSData *data) {
         photoModel.thumbnailData = data;
     }];
 }
 
 +(void)downloadFullsizedImageForPhotoModel:(FRPPhotoModel *)photoModel {
-    NSAssert(photoModel.fullsizedURL, @"Full sized URL must not be nil");
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:photoModel.fullsizedURL]];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+    [self download:photoModel.fullsizedURL withCompletion:^(NSData *data) {
         photoModel.fullsizedData = data;
+    }];
+}
+
++(void)download:(NSString *)urlString withCompletion:(void(^)(NSData *data))completion {
+    NSAssert(urlString, @"URL must not be nil");
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (completion) {
+            completion(data);
+        }
     }];
 }
 
