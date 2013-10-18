@@ -85,25 +85,25 @@ PODS:
   - libextobjc/RuntimeExtensions (0.3)
   - libextobjc/UmbrellaHeader (0.3)
   - libffi (3.0.13)
-  - ReactiveCocoa (2.1):
+  - ReactiveCocoa (2.1.3):
     - ReactiveCocoa/Core
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/Core (2.1):
+  - ReactiveCocoa/Core (2.1.3):
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.1)
+  - ReactiveCocoa/no-arc (2.1.3)
   - SVProgressHUD (0.9)
 
 DEPENDENCIES:
   - 500px-iOS-api (= 1.0.4)
   - libextobjc (= 0.3)
-  - ReactiveCocoa (= 2.1)
+  - ReactiveCocoa (= 2.1.3)
   - SVProgressHUD (= 0.9)
 
 SPEC CHECKSUMS:
   500px-iOS-api: fde71ddd4a05f06b94b8ec7c29bbcd2e589b7e70
   libextobjc: 820a79dbbbc498611e04fffd07d2d52a5588e7ac
   libffi: 64ef39353e747bb2b25e1026afd96a157bf9231c
-  ReactiveCocoa: b686fa735c28c2dc7311fbd2f0895b4d4ae07360
+  ReactiveCocoa: 0142b823f4737effe6100f9fbb0a43bdcb629aae
   SVProgressHUD: 03d4845ec8e64591726428a08236c6a5489d45f8
 
 COCOAPODS: 0.26.2
