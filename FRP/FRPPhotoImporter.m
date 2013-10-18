@@ -43,7 +43,7 @@
         }
     }];
     
-    return subject;
+    return [subject setNameWithFormat:@"%@ +importPhotos", self];
 }
 
 +(RACSubject *)fetchPhotoDetails:(FRPPhotoModel *)photoModel {
@@ -65,7 +65,7 @@
         }
     }];
     
-    return subject;
+    return [subject setNameWithFormat:@"%@ +fetchPhotoDetails: %@", self, photoModel];
 }
 
 +(void)configurePhotoModel:(FRPPhotoModel *)photoModel withDictionary:(NSDictionary *)dictionary {
