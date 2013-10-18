@@ -23,6 +23,7 @@ static NSString *CellIdentifier = @"Cell";
 @interface FRPGalleryViewController ()
 
 @property (nonatomic, strong) NSArray *photosArray;
+@property (nonatomic, strong) id collectionViewDelegate;
 
 @end
 
@@ -49,13 +50,14 @@ static NSString *CellIdentifier = @"Cell";
     [self.collectionView registerClass:[FRPCell class] forCellWithReuseIdentifier:CellIdentifier];
     
     // Reactive Stuff
+    @weakify(self);
+    
     RACSignal *photoSignal = [FRPPhotoImporter importPhotos];
-    RACSignal *noErrors = [photoSignal catch:^RACSignal *(NSError *error) {
+    RACSignal *photosLoaded = [photoSignal catch:^RACSignal *(NSError *error) {
         NSLog(@"Couldn't fetch photos from 500px: %@", error);
         return [RACSignal empty];
     }];
-    RACSignal *photosLoaded = RAC(self, photosArray) = noErrors;
-    @weakify(self);
+    RAC(self, photosArray) = photosLoaded;
     [photosLoaded subscribeCompleted:^{
         @strongify(self)
         [self.collectionView reloadData];
@@ -68,14 +70,13 @@ static NSString *CellIdentifier = @"Cell";
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:[value.second  integerValue] inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:NO];
     }];
     
-    RACDelegateProxy *collectionViewDelegate = [[RACDelegateProxy alloc] initWithProtocol:@protocol(UICollectionViewDelegate)];
-    [[collectionViewDelegate rac_signalForSelector:@selector(collectionView:didSelectItemAtIndexPath:)] subscribeNext:^(RACTuple *arguments) {
+    self.collectionViewDelegate = [[RACDelegateProxy alloc] initWithProtocol:@protocol(UICollectionViewDelegate)];
+    [[self.collectionViewDelegate rac_signalForSelector:@selector(collectionView:didSelectItemAtIndexPath:)] subscribeNext:^(RACTuple *arguments) {
         @strongify(self);
         FRPFullSizePhotoViewController *viewController = [[FRPFullSizePhotoViewController alloc] initWithPhotoModels:self.photosArray currentPhotoIndex:[(NSIndexPath *)arguments.second item]];
         viewController.delegate = (id<FRPFullSizePhotoViewControllerDelegate>)viewControllerDelegate;
         [self.navigationController pushViewController:viewController animated:YES];
     }];
-    self.collectionView.delegate = (id<UICollectionViewDelegate>)collectionViewDelegate;
 }
 
 #pragma mark - UICollectionViewDataSource Methods
