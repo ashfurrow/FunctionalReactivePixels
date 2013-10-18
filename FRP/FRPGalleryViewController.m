@@ -51,16 +51,14 @@ static NSString *CellIdentifier = @"Cell";
     // Reactive Stuff
     @weakify(self);
     
-    RACSignal *photoSignal = [FRPPhotoImporter importPhotos];
-    RACSignal *photosLoaded = [photoSignal catch:^RACSignal *(NSError *error) {
-        NSLog(@"Couldn't fetch photos from 500px: %@", error);
-        return [RACSignal empty];
-    }];
-    RAC(self, photosArray) = photosLoaded;
-    [photosLoaded subscribeCompleted:^{
-        @strongify(self)
-        [self.collectionView reloadData];
-    }];
+    RAC(self, photosArray) = [[[[FRPPhotoImporter
+        importPhotos]
+        doCompleted:^{
+            @strongify(self)
+            [self.collectionView reloadData];
+        }]
+        logError]
+        catchTo:[RACSignal empty]];
     
     [[self rac_signalForSelector:@selector(userDidScroll:toPhotoAtIndex:) fromProtocol:@protocol(FRPFullSizePhotoViewControllerDelegate)] subscribeNext:^(RACTuple *value) {
         @strongify(self);
