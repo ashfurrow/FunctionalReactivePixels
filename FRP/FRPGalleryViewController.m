@@ -20,10 +20,9 @@
 
 static NSString *CellIdentifier = @"Cell";
 
-@interface FRPGalleryViewController () <FRPFullSizePhotoViewControllerDelegate, UICollectionViewDelegate>
+@interface FRPGalleryViewController ()
 
 @property (nonatomic, strong) NSArray *photosArray;
-@property (nonatomic, strong) id collectionViewDelegate;
 
 @end
 
@@ -71,9 +70,12 @@ static NSString *CellIdentifier = @"Cell";
     [[self rac_signalForSelector:@selector(collectionView:didSelectItemAtIndexPath:) fromProtocol:@protocol(UICollectionViewDelegate)] subscribeNext:^(RACTuple *arguments) {
         @strongify(self);
         FRPFullSizePhotoViewController *viewController = [[FRPFullSizePhotoViewController alloc] initWithPhotoModels:self.photosArray currentPhotoIndex:[(NSIndexPath *)arguments.second item]];
-        viewController.delegate = self;
+        viewController.delegate = (id<FRPFullSizePhotoViewControllerDelegate>)self;
         [self.navigationController pushViewController:viewController animated:YES];
     }];
+    
+    // Need to "reset" the cached values of respondsToSelector: of UIKit
+    self.collectionView.delegate = self;
 }
 
 #pragma mark - UICollectionViewDataSource Methods
