@@ -49,10 +49,15 @@ static NSString *CellIdentifier = @"Cell";
     [self.collectionView registerClass:[FRPCell class] forCellWithReuseIdentifier:CellIdentifier];
     
     // Reactive Stuff
+    RACSignal *photoSignal = [FRPPhotoImporter importPhotos];
+    RACSignal *noErrors = [photoSignal catch:^RACSignal *(NSError *error) {
+        NSLog(@"Couldn't fetch photos from 500px: %@", error);
+        return [RACSignal empty];
+    }];
+    RACSignal *photosLoaded = RAC(self, photosArray) = noErrors;
     @weakify(self);
-    [RACObserve(self, photosArray) subscribeNext:^(id x) {
-        @strongify(self);
-        
+    [photosLoaded subscribeCompleted:^{
+        @strongify(self)
         [self.collectionView reloadData];
     }];
     
@@ -71,19 +76,6 @@ static NSString *CellIdentifier = @"Cell";
         [self.navigationController pushViewController:viewController animated:YES];
     }];
     self.collectionView.delegate = (id<UICollectionViewDelegate>)collectionViewDelegate;
-    
-    // Load data
-    [self loadPopularPhotos];
-}
-
-#pragma mark - Private Methods
-
--(void)loadPopularPhotos {
-    [[FRPPhotoImporter importPhotos] subscribeNext:^(id x) {
-        self.photosArray = x;
-    } error:^(NSError *error) {
-        NSLog(@"Couldn't fetch photos from 500px: %@", error);
-    }];
 }
 
 #pragma mark - UICollectionViewDataSource Methods
