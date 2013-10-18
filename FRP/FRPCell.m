@@ -30,16 +30,12 @@
     imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [self.contentView addSubview:imageView];
     self.imageView = imageView;
+
+    RAC(self.imageView, image) = [[RACObserve(self, photoModel.thumbnailData) ignore:nil] map:^(NSData *data) {
+        return [UIImage imageWithData:data];
+    }];
     
     return self;
-}
-
--(void)setPhotoModel:(FRPPhotoModel *)photoModel {
-    RACSignal *prepareForReuseSignal = [self rac_signalForSelector:@selector(prepareForReuse)];
-    
-    RAC(self.imageView, image) = [[[RACObserve(photoModel, thumbnailData) ignore:[NSNull null]] map:^(NSData *data) {
-        return [UIImage imageWithData:data];
-    }] takeUntil:prepareForReuseSignal];
 }
 
 @end
