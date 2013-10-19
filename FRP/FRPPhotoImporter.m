@@ -101,11 +101,11 @@
 }
 
 +(void)downloadThumbnailForPhotoModel:(FRPPhotoModel *)photoModel {
-    RAC(photoModel, thumbnailData) = [[self download:photoModel.thumbnailURL] take:1];
+    RAC(photoModel, thumbnailData) = [self download:photoModel.thumbnailURL];
 }
 
 +(void)downloadFullsizedImageForPhotoModel:(FRPPhotoModel *)photoModel {
-    RAC(photoModel, thumbnailData) = [[self download:photoModel.fullsizedURL] take:1];
+    RAC(photoModel, thumbnailData) = [self download:photoModel.fullsizedURL];
 }
 
 +(RACSignal *)download:(NSString *)urlString {
