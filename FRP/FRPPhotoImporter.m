@@ -22,7 +22,7 @@
 +(RACSignal *)importPhotos {
     NSURLRequest *request = [self popularURLRequest];
     
-    return [[[[[NSURLConnection rac_sendAsynchronousRequest:request] reduceEach:^id(NSURLResponse *response, NSData *data){
+    return [[[[[[NSURLConnection rac_sendAsynchronousRequest:request] reduceEach:^id(NSURLResponse *response, NSData *data){
         return data;
     }] deliverOn:[RACScheduler mainThreadScheduler]] map:^id(NSData *data) {
         id results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
@@ -35,12 +35,12 @@
             
             return model;
         }] array];
-    }] replay];
+    }] publish] autoconnect];
 }
 
 +(RACSignal *)fetchPhotoDetails:(FRPPhotoModel *)photoModel {
     NSURLRequest *request = [self photoURLRequest:photoModel];
-    return [[[[[NSURLConnection rac_sendAsynchronousRequest:request] reduceEach:^id(NSURLResponse *response, NSData *data){
+    return [[[[[[NSURLConnection rac_sendAsynchronousRequest:request] reduceEach:^id(NSURLResponse *response, NSData *data){
         return data;
     }] deliverOn:[RACScheduler mainThreadScheduler]] map:^id(NSData *data) {
         id results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil][@"photo"];
@@ -49,7 +49,7 @@
         [self downloadFullsizedImageForPhotoModel:photoModel];
         
         return photoModel;
-    }] replay];
+    }] publish] autoconnect];
 }
 
 +(void)configurePhotoModel:(FRPPhotoModel *)photoModel withDictionary:(NSDictionary *)dictionary {
