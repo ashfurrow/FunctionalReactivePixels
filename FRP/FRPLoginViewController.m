@@ -42,16 +42,13 @@
         @strongify(self);
         return [FRPPhotoImporter logInWithUsername:self.usernameTextField.text password:self.passwordTextField.text];
     }];
-    [self.navigationItem.rightBarButtonItem.rac_command.executionSignals subscribeNext:^(id x) {
-        [x subscribeNext:^(id x) {
-            @strongify(self);
-            if ([x boolValue]) {
-                [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-            } else {
-                [SVProgressHUD showErrorWithStatus:@"Failed"];
-            }
-            NSLog(@"Login success: %@", x);
-        }];
+    [[self.navigationItem.rightBarButtonItem.rac_command.executionSignals switchToLatest] subscribeNext:^(id x) {
+        @strongify(self);
+        if ([x boolValue]) {
+            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        } else {
+            [SVProgressHUD showErrorWithStatus:@"Failed"];
+        }
     } error:^(NSError *error) {
         NSLog(@"Login error: %@", error);
     }];
