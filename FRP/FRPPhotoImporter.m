@@ -19,53 +19,37 @@
     return [AppDelegate.apiHelper urlRequestForPhotoID:photoModel.identifier.integerValue];
 }
 
-+(RACSubject *)importPhotos {
-    RACSubject *subject = [RACSubject subject];
-    
++(RACSignal *)importPhotos {
     NSURLRequest *request = [self popularURLRequest];
     
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        if (data) {
-            id results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    return [[[[[NSURLConnection rac_sendAsynchronousRequest:request] map:^id(RACTuple *value) {
+        return [value second];
+    }] deliverOn:[RACScheduler mainThreadScheduler]] map:^id(NSData *data) {
+        id results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        
+        return [[[results[@"photos"] rac_sequence] map:^id(NSDictionary *photoDictionary) {
+            FRPPhotoModel *model = [FRPPhotoModel new];
             
-            [subject sendNext:[[[results[@"photos"] rac_sequence] map:^id(NSDictionary *photoDictionary) {
-                FRPPhotoModel *model = [FRPPhotoModel new];
-                
-                [self configurePhotoModel:model withDictionary:photoDictionary];
-                [self downloadThumbnailForPhotoModel:model];
-                
-                return model;
-            }] array]];
-            [subject sendCompleted];
-        }
-        else {
-            [subject sendError:connectionError];
-        }
-    }];
-    
-    return [subject setNameWithFormat:@"%@ +importPhotos", self];
+            [self configurePhotoModel:model withDictionary:photoDictionary];
+            [self downloadThumbnailForPhotoModel:model];
+            
+            return model;
+        }] array];
+    }] replay];
 }
 
-+(RACSubject *)fetchPhotoDetails:(FRPPhotoModel *)photoModel {
-    RACSubject *subject = [RACSubject subject];
-    
++(RACSignal *)fetchPhotoDetails:(FRPPhotoModel *)photoModel {
     NSURLRequest *request = [self photoURLRequest:photoModel];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        if (data) {
-            id results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil][@"photo"];
-            
-            [self configurePhotoModel:photoModel withDictionary:results];
-            [self downloadFullsizedImageForPhotoModel:photoModel];
-            
-            [subject sendNext:photoModel];
-            [subject sendCompleted];
-        }
-        else {
-            [subject sendError:connectionError];
-        }
-    }];
-    
-    return [subject setNameWithFormat:@"%@ +fetchPhotoDetails: %@", self, photoModel];
+    return [[[[[NSURLConnection rac_sendAsynchronousRequest:request] map:^id(RACTuple *value) {
+        return [value second];
+    }] deliverOn:[RACScheduler mainThreadScheduler]] map:^id(NSData *data) {
+        id results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil][@"photo"];
+        
+        [self configurePhotoModel:photoModel withDictionary:results];
+        [self downloadFullsizedImageForPhotoModel:photoModel];
+        
+        return photoModel;
+    }] replay];
 }
 
 +(void)configurePhotoModel:(FRPPhotoModel *)photoModel withDictionary:(NSDictionary *)dictionary {
@@ -105,7 +89,7 @@
 }
 
 +(void)downloadFullsizedImageForPhotoModel:(FRPPhotoModel *)photoModel {
-    RAC(photoModel, thumbnailData) = [self download:photoModel.fullsizedURL];
+    RAC(photoModel, fullsizedData) = [self download:photoModel.fullsizedURL];
 }
 
 +(RACSignal *)download:(NSString *)urlString {
@@ -113,9 +97,9 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
     
-    return [[NSURLConnection rac_sendAsynchronousRequest:request] map:^id(RACTuple *value) {
+    return [[[NSURLConnection rac_sendAsynchronousRequest:request] map:^id(RACTuple *value) {
         return [value second];
-    }];
+    }] deliverOn:[RACScheduler mainThreadScheduler]];
 }
 
 @end
