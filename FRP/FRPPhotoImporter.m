@@ -53,13 +53,18 @@
 }
 
 +(RACSignal *)logInWithUsername:(NSString *)username password:(NSString *)password {
-    RACSubject *subject = [RACSubject subject];
-    [PXRequest authenticateWithUserName:username password:password completion:^(BOOL success) {
-        [subject sendNext:@(success)];
-        [subject sendCompleted];
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [PXRequest authenticateWithUserName:username password:password completion:^(BOOL success) {
+            if (success) {
+                [subscriber sendCompleted];
+            } else {
+                [subscriber sendError:[NSError errorWithDomain:@"500px API" code:0 userInfo:@{NSLocalizedDescriptionKey: @"Could not log in."}]];
+            }
+        }];
+        
+        // Cannot cancel request
+        return nil;
     }];
-    
-    return [subject setNameWithFormat:@"%@ +loginWithUsername:password:", self];
 }
 
 #pragma mark - Private Methods
