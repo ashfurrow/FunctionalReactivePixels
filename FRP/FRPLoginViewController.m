@@ -54,11 +54,13 @@
     }];
     
     self.navigationItem.leftBarButtonItem.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        @strongify(self);
-        
-        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-        
-        return [RACSignal empty];
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            @strongify(self);
+            
+            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+            
+            return [RACDisposable disposableWithBlock:^{}];
+        }];
     }];
 }
 

@@ -75,13 +75,15 @@ static NSString *CellIdentifier = @"Cell";
     }];
     
     self.navigationItem.rightBarButtonItem.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        @strongify(self);
-        FRPLoginViewController *viewController = [[FRPLoginViewController alloc] initWithNibName:@"FRPLoginViewController" bundle:nil];
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-        
-        [self presentViewController:navigationController animated:YES completion:nil];
-        
-        return [RACSignal empty];
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            @strongify(self);
+            FRPLoginViewController *viewController = [[FRPLoginViewController alloc] initWithNibName:@"FRPLoginViewController" bundle:nil];
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+            
+            [self presentViewController:navigationController animated:YES completion:nil];
+            
+            return [RACDisposable disposableWithBlock:^{}];
+        }];
     }];
     
     // Need to "reset" the cached values of respondsToSelector: of UIKit
