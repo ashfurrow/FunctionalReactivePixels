@@ -22,8 +22,8 @@
 +(RACSignal *)importPhotos {
     NSURLRequest *request = [self popularURLRequest];
     
-    return [[[[[NSURLConnection rac_sendAsynchronousRequest:request] map:^id(RACTuple *value) {
-        return [value second];
+    return [[[[[[NSURLConnection rac_sendAsynchronousRequest:request] reduceEach:^id(NSURLResponse *response, NSData *data){
+        return data;
     }] deliverOn:[RACScheduler mainThreadScheduler]] map:^id(NSData *data) {
         id results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         
@@ -35,13 +35,13 @@
             
             return model;
         }] array];
-    }] replay];
+    }] publish] autoconnect];
 }
 
 +(RACSignal *)fetchPhotoDetails:(FRPPhotoModel *)photoModel {
     NSURLRequest *request = [self photoURLRequest:photoModel];
-    return [[[[[NSURLConnection rac_sendAsynchronousRequest:request] map:^id(RACTuple *value) {
-        return [value second];
+    return [[[[[[NSURLConnection rac_sendAsynchronousRequest:request] reduceEach:^id(NSURLResponse *response, NSData *data){
+        return data;
     }] deliverOn:[RACScheduler mainThreadScheduler]] map:^id(NSData *data) {
         id results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil][@"photo"];
         
@@ -49,7 +49,7 @@
         [self downloadFullsizedImageForPhotoModel:photoModel];
         
         return photoModel;
-    }] replay];
+    }] publish] autoconnect];
 }
 
 +(RACSignal *)logInWithUsername:(NSString *)username password:(NSString *)password {
@@ -109,8 +109,8 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
     
-    return [[[NSURLConnection rac_sendAsynchronousRequest:request] map:^id(RACTuple *value) {
-        return [value second];
+    return [[[NSURLConnection rac_sendAsynchronousRequest:request] reduceEach:^id(NSURLResponse *response, NSData *data){
+        return data;
     }] deliverOn:[RACScheduler mainThreadScheduler]];
 }
 
