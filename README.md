@@ -3,6 +3,8 @@ FunctionalReactivePixels
 
 A demonstration of how to use FRP with ReactiveCocoa in an iOS context using the 500px API. 
 
+This is code to accompany [my book](https://leanpub.com/iosfrp).
+
 A work-in-progress. Pull-requests always welcome. 
 
 ![](http://static.ashfurrow.com/github/gallery.png)
