@@ -49,8 +49,9 @@
         } else {
             [SVProgressHUD showErrorWithStatus:@"Failed"];
         }
-    } error:^(NSError *error) {
-        NSLog(@"Login error: %@", error);
+    }];
+    [self.navigationItem.rightBarButtonItem.rac_command.errors subscribeNext:^(id x) {
+        NSLog(@"Login error: %@", x);
     }];
     
     self.navigationItem.leftBarButtonItem.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
