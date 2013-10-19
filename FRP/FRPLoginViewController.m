@@ -59,7 +59,7 @@
             
             [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
             
-            return [RACDisposable disposableWithBlock:^{}];
+            return nil;
         }];
     }];
 }

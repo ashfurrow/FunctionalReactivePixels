@@ -82,7 +82,7 @@ static NSString *CellIdentifier = @"Cell";
             
             [self presentViewController:navigationController animated:YES completion:nil];
             
-            return [RACDisposable disposableWithBlock:^{}];
+            return nil;
         }];
     }];
     

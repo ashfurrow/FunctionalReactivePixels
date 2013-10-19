@@ -64,7 +64,7 @@
             
             [self presentViewController:navigationController animated:YES completion:nil];
             
-            return [RACDisposable disposableWithBlock:^{}];
+            return nil;
         }];
     }];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
