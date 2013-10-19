@@ -59,7 +59,7 @@
         [subject sendCompleted];
     }];
     
-    return subject;
+    return [subject setNameWithFormat:@"%@ +loginWithUsername:password:", self];
 }
 
 #pragma mark - Private Methods
