@@ -86,10 +86,10 @@
 +(NSString *)urlForImageSize:(NSInteger)size inDictionary:(NSDictionary *)dictionary {
     /*
      images =     (
-     {
-     size = 3;
-     url = "http://ppcdn.500px.org/49204370/b125a49d0863e0ba05d8196072b055876159f33e/3.jpg";
-     }
+        {
+            size = 3;
+            url = "http://ppcdn.500px.org/49204370/b125a49d0863e0ba05d8196072b055876159f33e/3.jpg";
+        }
      );
      */
     
@@ -112,6 +112,7 @@
     NSAssert(urlString, @"URL must not be nil");
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    
     return [[NSURLConnection rac_sendAsynchronousRequest:request] map:^id(RACTuple *value) {
         return [value second];
     }];
