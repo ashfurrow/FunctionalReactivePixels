@@ -52,6 +52,18 @@
     }] replay];
 }
 
++(RACSignal *)logInWithUsername:(NSString *)username password:(NSString *)password {
+    RACSubject *subject = [RACSubject subject];
+    [PXRequest authenticateWithUserName:username password:password completion:^(BOOL success) {
+        [subject sendNext:@(success)];
+        [subject sendCompleted];
+    }];
+    
+    return subject;
+}
+
+#pragma mark - Private Methods
+
 +(void)configurePhotoModel:(FRPPhotoModel *)photoModel withDictionary:(NSDictionary *)dictionary {
     // Basics details fetched with the first, basic request
     photoModel.photoName = dictionary[@"name"];

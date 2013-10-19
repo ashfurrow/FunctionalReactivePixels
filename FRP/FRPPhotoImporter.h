@@ -17,4 +17,6 @@
 
 +(RACSignal *)fetchPhotoDetails:(FRPPhotoModel *)photoModel;
 
++(RACSignal *)logInWithUsername:(NSString *)username password:(NSString *)password;
+
 @end
