@@ -40,10 +40,12 @@
     self.title = self.photoModel.photoName;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:nil action:nil];
     self.navigationItem.rightBarButtonItem.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        @strongify(self);
-        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-        
-        return [RACSignal empty];
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            @strongify(self);
+            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+            
+            return nil;
+        }];
     }];
     
     // Configure self's view

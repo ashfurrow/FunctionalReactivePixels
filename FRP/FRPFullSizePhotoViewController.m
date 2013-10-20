@@ -56,14 +56,16 @@
     @weakify(self);
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
     infoButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        @strongify(self);
-        
-        FRPPhotoDetailViewController *viewController = [[FRPPhotoDetailViewController alloc] initWithPhotoModel:[self.pageViewController.viewControllers.firstObject photoModel]];
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-        
-        [self presentViewController:navigationController animated:YES completion:nil];
-        
-        return [RACSignal empty];
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            @strongify(self);
+            
+            FRPPhotoDetailViewController *viewController = [[FRPPhotoDetailViewController alloc] initWithPhotoModel:[self.pageViewController.viewControllers.firstObject photoModel]];
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+            
+            [self presentViewController:navigationController animated:YES completion:nil];
+            
+            return nil;
+        }];
     }];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
     

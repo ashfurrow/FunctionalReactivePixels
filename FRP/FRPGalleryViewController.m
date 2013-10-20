@@ -9,6 +9,7 @@
 // View Controllers
 #import "FRPGalleryViewController.h"
 #import "FRPFullSizePhotoViewController.h"
+#import "FRPLoginViewController.h"
 
 // Views
 #import "FRPCell.h"
@@ -44,6 +45,7 @@ static NSString *CellIdentifier = @"Cell";
     
     // Configure self
     self.title = @"Popular on 500px";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Log In" style:UIBarButtonItemStylePlain target:nil action:nil];
     
     // Configure view
     [self.collectionView registerClass:[FRPCell class] forCellWithReuseIdentifier:CellIdentifier];
@@ -70,6 +72,18 @@ static NSString *CellIdentifier = @"Cell";
         FRPFullSizePhotoViewController *viewController = [[FRPFullSizePhotoViewController alloc] initWithPhotoModels:self.photosArray currentPhotoIndex:[(NSIndexPath *)arguments.second item]];
         viewController.delegate = (id<FRPFullSizePhotoViewControllerDelegate>)self;
         [self.navigationController pushViewController:viewController animated:YES];
+    }];
+    
+    self.navigationItem.rightBarButtonItem.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            @strongify(self);
+            FRPLoginViewController *viewController = [[FRPLoginViewController alloc] initWithNibName:@"FRPLoginViewController" bundle:nil];
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+            
+            [self presentViewController:navigationController animated:YES completion:nil];
+            
+            return nil;
+        }];
     }];
     
     // Need to "reset" the cached values of respondsToSelector: of UIKit

@@ -52,6 +52,23 @@
     }] publish] autoconnect];
 }
 
++(RACSignal *)logInWithUsername:(NSString *)username password:(NSString *)password {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [PXRequest authenticateWithUserName:username password:password completion:^(BOOL success) {
+            if (success) {
+                [subscriber sendCompleted];
+            } else {
+                [subscriber sendError:[NSError errorWithDomain:@"500px API" code:0 userInfo:@{NSLocalizedDescriptionKey: @"Could not log in."}]];
+            }
+        }];
+        
+        // Cannot cancel request
+        return nil;
+    }];
+}
+
+#pragma mark - Private Methods
+
 +(void)configurePhotoModel:(FRPPhotoModel *)photoModel withDictionary:(NSDictionary *)dictionary {
     // Basics details fetched with the first, basic request
     photoModel.photoName = dictionary[@"name"];
