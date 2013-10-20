@@ -67,6 +67,25 @@
     }];
 }
 
++(RACSignal *)voteForPhoto:(FRPPhotoModel *)photoModel {
+    return [[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        PXRequest *voteRequest = [PXRequest requestToVoteForPhoto:[photoModel.identifier integerValue] completion:^(NSDictionary *results, NSError *error) {
+            if (error) {
+                [subscriber sendError:error];
+            } else {
+                photoModel.votedFor = YES;
+                [subscriber sendCompleted];
+            }
+        }];
+        
+        return [RACDisposable disposableWithBlock:^{
+            if (voteRequest.requestStatus == PXRequestStatusStarted) {
+                [voteRequest cancel];
+            }
+        }];
+    }] publish] autoconnect];
+}
+
 #pragma mark - Private Methods
 
 +(void)configurePhotoModel:(FRPPhotoModel *)photoModel withDictionary:(NSDictionary *)dictionary {

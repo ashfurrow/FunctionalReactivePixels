@@ -19,4 +19,6 @@
 
 +(RACSignal *)logInWithUsername:(NSString *)username password:(NSString *)password;
 
++(RACSignal *)voteForPhoto:(FRPPhotoModel *)photoModel;
+
 @end

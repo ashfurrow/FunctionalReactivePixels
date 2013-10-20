@@ -13,6 +13,9 @@
 // Model
 #import "FRPPhotoModel.h"
 
+// Utilities
+#import "FRPPhotoImporter.h"
+
 @interface FRPPhotoDetailViewController ()
 
 // Private assignment
@@ -90,9 +93,9 @@
         }
     }];
     voteButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            if (AppDelegate.apiHelper.authMode == PXAPIHelperModeNoAuth) {
-                // Not logged in
+        if ([[PXRequest apiHelper] authMode] == PXAPIHelperModeNoAuth) {
+            // Not logged in
+            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
                 
                 @strongify(self);
                 FRPLoginViewController *viewController = [[FRPLoginViewController alloc] initWithNibName:@"FRPLoginViewController" bundle:nil];
@@ -103,11 +106,10 @@
                 }];
                 
                 return nil;
-            } else {
-                
-                return nil;
-            }
-        }];
+            }];
+        } else {
+            return [FRPPhotoImporter voteForPhoto:self.photoModel];
+        }
     }];
     [self.view addSubview:voteButton];
 }
