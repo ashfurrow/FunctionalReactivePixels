@@ -80,7 +80,9 @@ static NSString *CellIdentifier = @"Cell";
             FRPLoginViewController *viewController = [[FRPLoginViewController alloc] initWithNibName:@"FRPLoginViewController" bundle:nil];
             UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
             
-            [self presentViewController:navigationController animated:YES completion:nil];
+            [self presentViewController:navigationController animated:YES completion:^{
+                [subscriber sendCompleted];
+            }];
             
             return nil;
         }];

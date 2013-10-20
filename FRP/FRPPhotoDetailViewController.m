@@ -6,7 +6,9 @@
 //  Copyright (c) 2013 Ash Furrow. All rights reserved.
 //
 
+// View Controllers
 #import "FRPPhotoDetailViewController.h"
+#import "FRPLoginViewController.h"
 
 // Model
 #import "FRPPhotoModel.h"
@@ -42,7 +44,9 @@
     self.navigationItem.rightBarButtonItem.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             @strongify(self);
-            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+            [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+                [subscriber sendCompleted];
+            }];
             
             return nil;
         }];
@@ -77,8 +81,34 @@
     
     UIButton *voteButton = [UIButton buttonWithType:UIButtonTypeCustom];
     voteButton.frame = CGRectMake(20, CGRectGetHeight(self.view.bounds) - 44 - 20, CGRectGetWidth(self.view.bounds) - 40, 44);
-    [voteButton setTitle:@"Vote" forState:UIControlStateNormal];
     voteButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    [RACObserve(self.photoModel, isVotedFor) subscribeNext:^(id x) {
+        if ([x boolValue]) {
+            [voteButton setTitle:@"Voted For!" forState:UIControlStateNormal];
+        } else {
+            [voteButton setTitle:@"Vote" forState:UIControlStateNormal];
+        }
+    }];
+    voteButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            if (AppDelegate.apiHelper.authMode == PXAPIHelperModeNoAuth) {
+                // Not logged in
+                
+                @strongify(self);
+                FRPLoginViewController *viewController = [[FRPLoginViewController alloc] initWithNibName:@"FRPLoginViewController" bundle:nil];
+                UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+                
+                [self presentViewController:navigationController animated:YES completion:^{
+                    [subscriber sendCompleted];
+                }];
+                
+                return nil;
+            } else {
+                
+                return nil;
+            }
+        }];
+    }];
     [self.view addSubview:voteButton];
 }
 @end

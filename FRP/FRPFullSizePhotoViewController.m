@@ -62,7 +62,9 @@
             FRPPhotoDetailViewController *viewController = [[FRPPhotoDetailViewController alloc] initWithPhotoModel:[self.pageViewController.viewControllers.firstObject photoModel]];
             UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
             
-            [self presentViewController:navigationController animated:YES completion:nil];
+            [self presentViewController:navigationController animated:YES completion:^{
+                [subscriber sendCompleted];
+            }];
             
             return nil;
         }];

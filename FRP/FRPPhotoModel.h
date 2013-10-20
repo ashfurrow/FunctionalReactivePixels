@@ -18,5 +18,6 @@
 @property (nonatomic, strong) NSData *thumbnailData;
 @property (nonatomic, strong) NSString *fullsizedURL;
 @property (nonatomic, strong) NSData *fullsizedData;
+@property (nonatomic, assign, getter = isVotedFor) BOOL votedFor;
 
 @end
