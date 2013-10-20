@@ -12,11 +12,11 @@
 @implementation FRPPhotoImporter
 
 +(NSURLRequest *)popularURLRequest {
-    return [AppDelegate.apiHelper urlRequestForPhotoFeature:PXAPIHelperPhotoFeaturePopular resultsPerPage:100 page:0 photoSizes:PXPhotoModelSizeThumbnail sortOrder:PXAPIHelperSortOrderRating except:PXPhotoModelCategoryNude];
+    return [[PXRequest apiHelper] urlRequestForPhotoFeature:PXAPIHelperPhotoFeaturePopular resultsPerPage:100 page:0 photoSizes:PXPhotoModelSizeThumbnail sortOrder:PXAPIHelperSortOrderRating except:PXPhotoModelCategoryNude];
 }
 
 +(NSURLRequest *)photoURLRequest:(FRPPhotoModel *)photoModel {
-    return [AppDelegate.apiHelper urlRequestForPhotoID:photoModel.identifier.integerValue];
+    return [[PXRequest apiHelper] urlRequestForPhotoID:photoModel.identifier.integerValue];
 }
 
 +(RACSignal *)importPhotos {
@@ -96,6 +96,10 @@
     photoModel.rating = dictionary[@"rating"];
 
     photoModel.thumbnailURL = [self urlForImageSize:3 inDictionary:dictionary[@"images"]];
+    
+    if (dictionary[@"voted"]) {
+        photoModel.votedFor = [dictionary[@"voted"] boolValue];
+    }
     
     // Extended attributes fetched with subsequent request
     if (dictionary[@"comments_count"]) {

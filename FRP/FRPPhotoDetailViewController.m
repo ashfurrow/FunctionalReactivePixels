@@ -15,11 +15,15 @@
 
 // Utilities
 #import "FRPPhotoImporter.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface FRPPhotoDetailViewController ()
 
 // Private assignment
 @property (nonatomic, strong) FRPPhotoModel *photoModel;
+
+// Private properties
+@property (nonatomic, assign) BOOL needsVotingOnceReappeared;
 
 @end
 
@@ -85,19 +89,22 @@
     UIButton *voteButton = [UIButton buttonWithType:UIButtonTypeCustom];
     voteButton.frame = CGRectMake(20, CGRectGetHeight(self.view.bounds) - 44 - 20, CGRectGetWidth(self.view.bounds) - 40, 44);
     voteButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    [RACObserve(self.photoModel, isVotedFor) subscribeNext:^(id x) {
+    // Note: can't use getter keypath
+    [RACObserve(self.photoModel, votedFor) subscribeNext:^(id x) {
         if ([x boolValue]) {
             [voteButton setTitle:@"Voted For!" forState:UIControlStateNormal];
         } else {
             [voteButton setTitle:@"Vote" forState:UIControlStateNormal];
         }
     }];
-    voteButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+    voteButton.rac_command = [[RACCommand alloc] initWithEnabled:[RACObserve(self.photoModel, isVotedFor) not] signalBlock:^RACSignal *(id input) {
         if ([[PXRequest apiHelper] authMode] == PXAPIHelperModeNoAuth) {
             // Not logged in
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                
                 @strongify(self);
+                
+                self.needsVotingOnceReappeared = YES;
+                
                 FRPLoginViewController *viewController = [[FRPLoginViewController alloc] initWithNibName:@"FRPLoginViewController" bundle:nil];
                 UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
                 
@@ -111,6 +118,21 @@
             return [FRPPhotoImporter voteForPhoto:self.photoModel];
         }
     }];
+    [voteButton.rac_command.errors subscribeNext:^(id x) {
+        [x subscribeNext:^(NSError *error) {
+            [SVProgressHUD showErrorWithStatus:[error localizedDescription]];
+        }];
+    }];
     [self.view addSubview:voteButton];
 }
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (self.needsVotingOnceReappeared) {
+        self.needsVotingOnceReappeared = NO;
+        [[FRPPhotoImporter voteForPhoto:self.photoModel] replay];
+    }
+}
+
 @end
