@@ -22,9 +22,6 @@
 // Private assignment
 @property (nonatomic, strong) FRPPhotoModel *photoModel;
 
-// Private properties
-@property (nonatomic, assign) BOOL needsVotingOnceReappeared;
-
 @end
 
 @implementation FRPPhotoDetailViewController
@@ -103,7 +100,9 @@
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
                 @strongify(self);
                 
-                self.needsVotingOnceReappeared = YES;
+                [[[self rac_signalForSelector:@selector(viewDidAppear:)] take:1] subscribeNext:^(id x) {
+                    [[FRPPhotoImporter voteForPhoto:self.photoModel] replay];
+                }];
                 
                 FRPLoginViewController *viewController = [[FRPLoginViewController alloc] initWithNibName:@"FRPLoginViewController" bundle:nil];
                 UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
@@ -124,15 +123,6 @@
         }];
     }];
     [self.view addSubview:voteButton];
-}
-
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    if (self.needsVotingOnceReappeared) {
-        self.needsVotingOnceReappeared = NO;
-        [[FRPPhotoImporter voteForPhoto:self.photoModel] replay];
-    }
 }
 
 @end
