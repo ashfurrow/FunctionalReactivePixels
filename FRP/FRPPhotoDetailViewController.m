@@ -94,15 +94,14 @@
             [voteButton setTitle:@"Vote" forState:UIControlStateNormal];
         }
     }];
+    /*
+     
+     */
     voteButton.rac_command = [[RACCommand alloc] initWithEnabled:[RACObserve(self.photoModel, isVotedFor) not] signalBlock:^RACSignal *(id input) {
         if ([[PXRequest apiHelper] authMode] == PXAPIHelperModeNoAuth) {
             // Not logged in
-            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
                 @strongify(self);
-                
-                [[[self rac_signalForSelector:@selector(viewDidAppear:)] take:1] subscribeNext:^(id x) {
-                    [[FRPPhotoImporter voteForPhoto:self.photoModel] replay];
-                }];
                 
                 FRPLoginViewController *viewController = [[FRPLoginViewController alloc] initWithNibName:@"FRPLoginViewController" bundle:nil];
                 UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
@@ -112,6 +111,10 @@
                 }];
                 
                 return nil;
+            }] then:^RACSignal *{
+                return [[[self rac_signalForSelector:@selector(viewDidAppear:)] take:1] then:^RACSignal *{
+                    return [FRPPhotoImporter voteForPhoto:self.photoModel];
+                }];
             }];
         } else {
             return [FRPPhotoImporter voteForPhoto:self.photoModel];
