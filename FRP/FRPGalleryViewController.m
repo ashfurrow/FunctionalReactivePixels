@@ -55,11 +55,9 @@ static NSString *CellIdentifier = @"Cell";
     
     // Binding to view model
     @weakify(self);
-    self.viewModel.collectionViewReloadCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            @strongify(self);
-            [self.collectionView reloadData];
-        }];
+    [self.viewModel.collectionViewReloadCommand.executionSignals subscribeNext:^(id x) {
+        @strongify(self);
+        [self.collectionView reloadData];
     }];
     
     [[self rac_signalForSelector:@selector(userDidScroll:toPhotoAtIndex:) fromProtocol:@protocol(FRPFullSizePhotoViewControllerDelegate)] subscribeNext:^(RACTuple *value) {

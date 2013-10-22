@@ -18,6 +18,9 @@
     if (!self) return nil;
     
     @weakify(self);
+    self.collectionViewReloadCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        return [RACSignal empty];
+    }];
     RAC(self, photosArray) = [[[[FRPPhotoImporter importPhotos] doCompleted:^{
         @strongify(self)
         [self.collectionViewReloadCommand execute:nil];
