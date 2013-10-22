@@ -130,9 +130,7 @@
 				5EAD1F5518173A1E00C67860 /* Photo View Controller */,
 				5E595118180E21E0002F44FA /* FRPPhotoDetailViewController.h */,
 				5E595119180E21E0002F44FA /* FRPPhotoDetailViewController.m */,
-				5E59511B181219AC002F44FA /* FRPLoginViewController.h */,
-				5E59511C181219AC002F44FA /* FRPLoginViewController.m */,
-				5E59511E18121D09002F44FA /* FRPLoginViewController.xib */,
+				5EAD1F5918173E9700C67860 /* Login */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -168,6 +166,16 @@
 				5EAD1F5718173A3200C67860 /* FRPPhotoViewModel.m */,
 			);
 			name = "Photo View Controller";
+			sourceTree = "<group>";
+		};
+		5EAD1F5918173E9700C67860 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				5E59511B181219AC002F44FA /* FRPLoginViewController.h */,
+				5E59511C181219AC002F44FA /* FRPLoginViewController.m */,
+				5E59511E18121D09002F44FA /* FRPLoginViewController.xib */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 		5EBC599F180B267400B683A7 /* UICollectionView Extensions */ = {

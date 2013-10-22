@@ -26,9 +26,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    // Configure self's view
-//    self.view.backgroundColor = [UIColor blackColor];
-    
     // Configure navigation item
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Log In" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:nil action:nil];
@@ -63,12 +60,6 @@
             return nil;
         }];
     }];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
