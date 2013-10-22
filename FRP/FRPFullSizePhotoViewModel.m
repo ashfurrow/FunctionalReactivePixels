@@ -36,4 +36,13 @@
     return self.photoArray[self.initialPhotoIndex];
 }
 
+-(FRPPhotoModel *)photoModelAtIndex:(NSInteger)index {
+    if (index < 0 || index > self.photoArray.count - 1) {
+        // Index was out of bounds, return nil
+        return nil;
+    } else {
+        return self.photoArray[index];
+    }
+}
+
 @end

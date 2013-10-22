@@ -18,5 +18,6 @@
 @property (nonatomic, readonly) NSInteger initialPhotoIndex;
 
 -(FRPPhotoModel *)initialPhotoModel;
+-(FRPPhotoModel *)photoModelAtIndex:(NSInteger)index;
 
 @end

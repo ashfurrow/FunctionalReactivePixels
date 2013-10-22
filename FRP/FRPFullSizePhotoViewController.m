@@ -77,14 +77,12 @@
 #pragma mark - Private Methods
 
 -(FRPPhotoViewController *)photoViewControllerForIndex:(NSInteger)index {
-    if (index >= 0 && index < self.viewModel.photoArray.count) {
-        FRPPhotoModel *photoModel = self.viewModel.photoArray[index];
-        
+    FRPPhotoModel *photoModel = [self.viewModel photoModelAtIndex:index];
+    if (photoModel) {
         FRPPhotoViewController *photoViewController = [[FRPPhotoViewController alloc] initWithPhotoModel:photoModel index:index];
         return photoViewController;
     }
     
-    // Index was out of bounds, return nil
     return nil;
 }
 
