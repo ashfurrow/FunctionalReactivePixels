@@ -14,6 +14,7 @@
 		5E59511D181219AC002F44FA /* FRPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E59511C181219AC002F44FA /* FRPLoginViewController.m */; };
 		5E59511F18121D09002F44FA /* FRPLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E59511E18121D09002F44FA /* FRPLoginViewController.xib */; };
 		5E730B0E1815F3E4003FCB43 /* FRPGalleryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E730B0D1815F3E4003FCB43 /* FRPGalleryViewModel.m */; };
+		5E730B101815F78B003FCB43 /* FRPGalleryViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E730B0F1815F78B003FCB43 /* FRPGalleryViewModelTests.m */; };
 		5EBC599E180B247500B683A7 /* FRPCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC599D180B247500B683A7 /* FRPCell.m */; };
 		5EBC59A6180B2AA200B683A7 /* FRPPhotoImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC59A5180B2AA200B683A7 /* FRPPhotoImporter.m */; };
 		5EBC59A9180B2C4F00B683A7 /* FRPGalleryFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC59A8180B2C4F00B683A7 /* FRPGalleryFlowLayout.m */; };
@@ -29,8 +30,8 @@
 		5EBE2B15180B07D0007B6BF3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EBE2AF8180B07D0007B6BF3 /* UIKit.framework */; };
 		5EBE2B16180B07D0007B6BF3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EBE2AFA180B07D0007B6BF3 /* CoreData.framework */; };
 		5EBE2B1E180B07D0007B6BF3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5EBE2B1C180B07D0007B6BF3 /* InfoPlist.strings */; };
-		5EBE2B20180B07D0007B6BF3 /* FRPTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBE2B1F180B07D0007B6BF3 /* FRPTests.m */; };
 		5EBE2B2B180B0AF1007B6BF3 /* FRPGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBE2B2A180B0AF1007B6BF3 /* FRPGalleryViewController.m */; };
+		F5C87C1873574C63889236C3 /* libPods-FRPTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F89E0211BE405E85BE5C5A /* libPods-FRPTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		5E59511E18121D09002F44FA /* FRPLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FRPLoginViewController.xib; sourceTree = "<group>"; };
 		5E730B0C1815F3E4003FCB43 /* FRPGalleryViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPGalleryViewModel.h; sourceTree = "<group>"; };
 		5E730B0D1815F3E4003FCB43 /* FRPGalleryViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPGalleryViewModel.m; sourceTree = "<group>"; };
+		5E730B0F1815F78B003FCB43 /* FRPGalleryViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPGalleryViewModelTests.m; sourceTree = "<group>"; };
 		5EBC599C180B247500B683A7 /* FRPCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPCell.h; sourceTree = "<group>"; };
 		5EBC599D180B247500B683A7 /* FRPCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPCell.m; sourceTree = "<group>"; };
 		5EBC59A0180B268600B683A7 /* FRPPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPPhotoModel.h; sourceTree = "<group>"; };
@@ -79,11 +81,12 @@
 		5EBE2B12180B07D0007B6BF3 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		5EBE2B1B180B07D0007B6BF3 /* FRPTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FRPTests-Info.plist"; sourceTree = "<group>"; };
 		5EBE2B1D180B07D0007B6BF3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5EBE2B1F180B07D0007B6BF3 /* FRPTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FRPTests.m; sourceTree = "<group>"; };
 		5EBE2B29180B0AF1007B6BF3 /* FRPGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPGalleryViewController.h; sourceTree = "<group>"; };
 		5EBE2B2A180B0AF1007B6BF3 /* FRPGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPGalleryViewController.m; sourceTree = "<group>"; };
 		772BE9E4C5824F1C8E5CDC45 /* libPods-FRP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FRP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5AC1B577BDC442AA756B515 /* Pods-FRPTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FRPTests.xcconfig"; path = "Pods/Pods-FRPTests.xcconfig"; sourceTree = "<group>"; };
 		CF6C5FA73F5F4703A3C7C4C0 /* Pods-FRP.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FRP.xcconfig"; path = "Pods/Pods-FRP.xcconfig"; sourceTree = "<group>"; };
+		E5F89E0211BE405E85BE5C5A /* libPods-FRPTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FRPTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,7 @@
 				5EBE2B16180B07D0007B6BF3 /* CoreData.framework in Frameworks */,
 				5EBE2B15180B07D0007B6BF3 /* UIKit.framework in Frameworks */,
 				5EBE2B14180B07D0007B6BF3 /* Foundation.framework in Frameworks */,
+				F5C87C1873574C63889236C3 /* libPods-FRPTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +172,7 @@
 				5EBE2AF3180B07D0007B6BF3 /* Frameworks */,
 				5EBE2AF2180B07D0007B6BF3 /* Products */,
 				CF6C5FA73F5F4703A3C7C4C0 /* Pods-FRP.xcconfig */,
+				C5AC1B577BDC442AA756B515 /* Pods-FRPTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -189,6 +194,7 @@
 				5EBE2AFA180B07D0007B6BF3 /* CoreData.framework */,
 				5EBE2B12180B07D0007B6BF3 /* XCTest.framework */,
 				772BE9E4C5824F1C8E5CDC45 /* libPods-FRP.a */,
+				E5F89E0211BE405E85BE5C5A /* libPods-FRPTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -223,7 +229,7 @@
 		5EBE2B19180B07D0007B6BF3 /* FRPTests */ = {
 			isa = PBXGroup;
 			children = (
-				5EBE2B1F180B07D0007B6BF3 /* FRPTests.m */,
+				5E730B0F1815F78B003FCB43 /* FRPGalleryViewModelTests.m */,
 				5EBE2B1A180B07D0007B6BF3 /* Supporting Files */,
 			);
 			path = FRPTests;
@@ -264,9 +270,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5EBE2B26180B07D0007B6BF3 /* Build configuration list for PBXNativeTarget "FRPTests" */;
 			buildPhases = (
+				36E5A3DAD6634878B5FF59AA /* Check Pods Manifest.lock */,
 				5EBE2B0D180B07D0007B6BF3 /* Sources */,
 				5EBE2B0E180B07D0007B6BF3 /* Frameworks */,
 				5EBE2B0F180B07D0007B6BF3 /* Resources */,
+				B5CABB6140E74D3BB80B0D5A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -333,6 +341,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		36E5A3DAD6634878B5FF59AA /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		88D5E1AB105C475DB1960326 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -346,6 +369,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B5CABB6140E74D3BB80B0D5A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-FRPTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E46E00988B20439593D30FC8 /* Copy Pods Resources */ = {
@@ -388,7 +426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5EBE2B20180B07D0007B6BF3 /* FRPTests.m in Sources */,
+				5E730B101815F78B003FCB43 /* FRPGalleryViewModelTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +562,7 @@
 		};
 		5EBE2B27180B07D0007B6BF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5AC1B577BDC442AA756B515 /* Pods-FRPTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FRP.app/FRP";
@@ -547,6 +586,7 @@
 		};
 		5EBE2B28180B07D0007B6BF3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5AC1B577BDC442AA756B515 /* Pods-FRPTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FRP.app/FRP";

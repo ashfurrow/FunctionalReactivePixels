@@ -18,7 +18,6 @@
     if (!self) return nil;
     
     @weakify(self);
-    
     RAC(self, photosArray) = [[[[FRPPhotoImporter importPhotos] doCompleted:^{
         @strongify(self)
         [self.collectionViewReloadCommand execute:nil];
