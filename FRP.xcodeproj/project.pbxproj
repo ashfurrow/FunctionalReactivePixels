@@ -17,6 +17,7 @@
 		5E730B101815F78B003FCB43 /* FRPGalleryViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E730B0F1815F78B003FCB43 /* FRPGalleryViewModelTests.m */; };
 		5E730B141815FE97003FCB43 /* FRPFullSizePhotoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E730B131815FE97003FCB43 /* FRPFullSizePhotoViewModel.m */; };
 		5EAD1F5818173A3200C67860 /* FRPPhotoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EAD1F5718173A3200C67860 /* FRPPhotoViewModel.m */; };
+		5EAD1F5C18173F1500C67860 /* FRPLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EAD1F5B18173F1500C67860 /* FRPLoginViewModel.m */; };
 		5EBC599E180B247500B683A7 /* FRPCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC599D180B247500B683A7 /* FRPCell.m */; };
 		5EBC59A6180B2AA200B683A7 /* FRPPhotoImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC59A5180B2AA200B683A7 /* FRPPhotoImporter.m */; };
 		5EBC59A9180B2C4F00B683A7 /* FRPGalleryFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC59A8180B2C4F00B683A7 /* FRPGalleryFlowLayout.m */; };
@@ -63,6 +64,8 @@
 		5E730B131815FE97003FCB43 /* FRPFullSizePhotoViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPFullSizePhotoViewModel.m; sourceTree = "<group>"; };
 		5EAD1F5618173A3200C67860 /* FRPPhotoViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPPhotoViewModel.h; sourceTree = "<group>"; };
 		5EAD1F5718173A3200C67860 /* FRPPhotoViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPPhotoViewModel.m; sourceTree = "<group>"; };
+		5EAD1F5A18173F1500C67860 /* FRPLoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPLoginViewModel.h; sourceTree = "<group>"; };
+		5EAD1F5B18173F1500C67860 /* FRPLoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPLoginViewModel.m; sourceTree = "<group>"; };
 		5EBC599C180B247500B683A7 /* FRPCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPCell.h; sourceTree = "<group>"; };
 		5EBC599D180B247500B683A7 /* FRPCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPCell.m; sourceTree = "<group>"; };
 		5EBC59A0180B268600B683A7 /* FRPPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPPhotoModel.h; sourceTree = "<group>"; };
@@ -174,6 +177,8 @@
 				5E59511B181219AC002F44FA /* FRPLoginViewController.h */,
 				5E59511C181219AC002F44FA /* FRPLoginViewController.m */,
 				5E59511E18121D09002F44FA /* FRPLoginViewController.xib */,
+				5EAD1F5A18173F1500C67860 /* FRPLoginViewModel.h */,
+				5EAD1F5B18173F1500C67860 /* FRPLoginViewModel.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -445,6 +450,7 @@
 				5EBC599E180B247500B683A7 /* FRPCell.m in Sources */,
 				5E595111180E065F002F44FA /* FRPFullSizePhotoViewController.m in Sources */,
 				5EBC59A9180B2C4F00B683A7 /* FRPGalleryFlowLayout.m in Sources */,
+				5EAD1F5C18173F1500C67860 /* FRPLoginViewModel.m in Sources */,
 				5E59511D181219AC002F44FA /* FRPLoginViewController.m in Sources */,
 				5EBE2B03180B07D0007B6BF3 /* main.m in Sources */,
 				5E730B0E1815F3E4003FCB43 /* FRPGalleryViewModel.m in Sources */,

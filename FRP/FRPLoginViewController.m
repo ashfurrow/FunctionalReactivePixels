@@ -12,10 +12,15 @@
 #import "FRPPhotoImporter.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
+// View Model
+#import "FRPLoginViewModel.h"
+
 @interface FRPLoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+
+@property (nonatomic, strong) FRPLoginViewModel *viewModel;
 
 @end
 
@@ -32,20 +37,16 @@
     
     // Reactive Stuff
     @weakify(self);
-    RACSignal *enabledSignal = [RACSignal combineLatest:@[self.usernameTextField.rac_textSignal, self.passwordTextField.rac_textSignal] reduce:^id(NSString *username, NSString *password){
-        return @(username.length > 0 && password.length > 0);
-    }];
-    self.navigationItem.rightBarButtonItem.rac_command = [[RACCommand alloc] initWithEnabled:enabledSignal signalBlock:^RACSignal *(id input) {
-        @strongify(self);
-        return [FRPPhotoImporter logInWithUsername:self.usernameTextField.text password:self.passwordTextField.text];
-    }];
-    [self.navigationItem.rightBarButtonItem.rac_command.executionSignals subscribeNext:^(id x) {
+    RAC(self.viewModel, username) = self.usernameTextField.rac_textSignal;
+    RAC(self.viewModel, password) = self.passwordTextField.rac_textSignal;
+    self.navigationItem.rightBarButtonItem.rac_command = self.viewModel.loginCommand;
+    [self.viewModel.loginCommand.executionSignals subscribeNext:^(id x) {
         [x subscribeCompleted:^{
             @strongify(self);
             [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
         }];
     }];
-    [self.navigationItem.rightBarButtonItem.rac_command.errors subscribeNext:^(id x) {
+    [self.viewModel.loginCommand.errors subscribeNext:^(id x) {
         NSLog(@"Login error: %@", x);
     }];
     
