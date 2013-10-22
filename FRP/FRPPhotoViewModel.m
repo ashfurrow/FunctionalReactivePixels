@@ -10,6 +10,7 @@
 
 //Utilities
 #import "FRPPhotoImporter.h"
+#import "FRPPhotoModel.h"
 
 @interface FRPPhotoViewModel ()
 
@@ -37,6 +38,8 @@
             } completed:^{
                 [subscriber sendCompleted];
             }];
+            
+            return nil;
         }];
     }];
 

@@ -63,7 +63,7 @@
             [self.viewModel.viewDidAppearCommand execute:nil];
         }
     }];
-    [self.viewModel.viewDidAppearCommand.executionSignals subscribeCompleted:^{
+    [self.viewModel.viewDidAppearCommand.executionSignals subscribeNext:^(id x) {
         [SVProgressHUD dismiss];
     }];
     [self.viewModel.viewDidAppearCommand.errors subscribeNext:^(id x) {

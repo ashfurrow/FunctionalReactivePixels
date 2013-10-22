@@ -14,9 +14,9 @@
 
 -(instancetype)initWithPhotoModelArray:(NSArray *)photoModelArray initialPhotoIndex:(NSInteger)initialPhotoIndex;
 
-@property (nonatomic, readonly) NSArray *photoArray;
 @property (nonatomic, readonly) NSInteger initialPhotoIndex;
 
+-(NSInteger)numberOfPhotos;
 -(FRPPhotoModel *)initialPhotoModel;
 -(FRPPhotoModel *)photoModelAtIndex:(NSInteger)index;
 

@@ -14,6 +14,7 @@
 // Models
 #import "FRPPhotoModel.h"
 #import "FRPFullSizePhotoViewModel.h"
+#import "FRPPhotoViewModel.h"
 
 @interface FRPFullSizePhotoViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
@@ -79,7 +80,8 @@
 -(FRPPhotoViewController *)photoViewControllerForIndex:(NSInteger)index {
     FRPPhotoModel *photoModel = [self.viewModel photoModelAtIndex:index];
     if (photoModel) {
-        FRPPhotoViewController *photoViewController = [[FRPPhotoViewController alloc] initWithPhotoModel:photoModel index:index];
+        FRPPhotoViewModel *photoViewModel = [[FRPPhotoViewModel alloc] initWithPhotoModel:photoModel];
+        FRPPhotoViewController *photoViewController = [[FRPPhotoViewController alloc] initWithViewModel:photoViewModel index:index];
         return photoViewController;
     }
     
