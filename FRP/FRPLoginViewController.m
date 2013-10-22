@@ -26,6 +26,15 @@
 
 @implementation FRPLoginViewController
 
+-(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (!self) return nil;
+    
+    self.viewModel = [FRPLoginViewModel new];
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
