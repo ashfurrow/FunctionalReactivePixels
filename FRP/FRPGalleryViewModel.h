@@ -12,6 +12,4 @@
 
 @property (nonatomic, strong) NSArray *photosArray;
 
-@property (nonatomic, strong) RACCommand *collectionViewReloadCommand;
-
 @end

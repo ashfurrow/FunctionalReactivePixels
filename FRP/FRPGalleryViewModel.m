@@ -17,14 +17,7 @@
     self = [super init];
     if (!self) return nil;
     
-    @weakify(self);
-    self.collectionViewReloadCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        return [RACSignal empty];
-    }];
-    RAC(self, photosArray) = [[[[FRPPhotoImporter importPhotos] doCompleted:^{
-        @strongify(self)
-        [self.collectionViewReloadCommand execute:nil];
-    }] logError] catchTo:[RACSignal empty]];
+    RAC(self, photosArray) = [[[FRPPhotoImporter importPhotos] logError] catchTo:[RACSignal empty]];
     
     return self;
 }

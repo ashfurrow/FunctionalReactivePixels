@@ -57,7 +57,7 @@ static NSString *CellIdentifier = @"Cell";
     
     // Binding to view model
     @weakify(self);
-    [self.viewModel.collectionViewReloadCommand.executionSignals subscribeNext:^(id x) {
+    [RACObserve(self.viewModel, photosArray) subscribeNext:^(id x) {
         @strongify(self);
         [self.collectionView reloadData];
     }];
