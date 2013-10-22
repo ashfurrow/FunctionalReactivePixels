@@ -94,13 +94,13 @@
             [voteButton setTitle:@"Vote" forState:UIControlStateNormal];
         }
     }];
-    /*
-     
-     */
     voteButton.rac_command = [[RACCommand alloc] initWithEnabled:[RACObserve(self.photoModel, isVotedFor) not] signalBlock:^RACSignal *(id input) {
+        // Assume that we're logged in at first. We'll replace this signal later if not.
+        RACSignal *authSignal = [RACSignal empty];
+        
         if ([[PXRequest apiHelper] authMode] == PXAPIHelperModeNoAuth) {
-            // Not logged in
-            return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            // Not logged in. Replace signal.
+            authSignal = [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
                 @strongify(self);
                 
                 FRPLoginViewController *viewController = [[FRPLoginViewController alloc] initWithNibName:@"FRPLoginViewController" bundle:nil];
@@ -112,13 +112,16 @@
                 
                 return nil;
             }] then:^RACSignal *{
-                return [[[self rac_signalForSelector:@selector(viewDidAppear:)] take:1] then:^RACSignal *{
-                    return [FRPPhotoImporter voteForPhoto:self.photoModel];
-                }];
+                @strongify(self);
+                // take:1 so that this signal completes once we've re-appeared.
+                return [[self rac_signalForSelector:@selector(viewDidAppear:)] take:1];
             }];
-        } else {
-            return [FRPPhotoImporter voteForPhoto:self.photoModel];
         }
+        
+        return [authSignal then:^RACSignal *{
+            @strongify(self);
+            return [FRPPhotoImporter voteForPhoto:self.photoModel];
+        }];
     }];
     [voteButton.rac_command.errors subscribeNext:^(id x) {
         [x subscribeNext:^(NSError *error) {
