@@ -50,4 +50,8 @@
     return self;
 }
 
+-(NSString *)photoName {
+    return self.photoModel.photoName;
+}
+
 @end

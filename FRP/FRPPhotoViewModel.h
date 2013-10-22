@@ -17,4 +17,6 @@
 @property (nonatomic, readonly) RACCommand *viewDidAppearCommand;
 @property (nonatomic, readonly) RACSignal *photoImageSignal;
 
+-(NSString *)photoName;
+
 @end

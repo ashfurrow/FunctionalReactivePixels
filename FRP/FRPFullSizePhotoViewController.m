@@ -91,7 +91,7 @@
 #pragma mark - UIPageViewControllerDelegate Methods 
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
-    self.title = [[self.pageViewController.viewControllers.firstObject photoModel] photoName];
+    self.title = [((FRPPhotoViewController *)self.pageViewController.viewControllers.firstObject).viewModel photoName];
     [self.delegate userDidScroll:self toPhotoAtIndex:[self.pageViewController.viewControllers.firstObject photoIndex]];
 }
 
