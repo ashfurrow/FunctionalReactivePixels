@@ -11,7 +11,9 @@
 #import "FRPFullSizePhotoViewController.h"
 #import "FRPLoginViewController.h"
 
+// View models
 #import "FRPGalleryViewModel.h"
+#import "FRPFullSizePhotoViewModel.h"
 
 // Views
 #import "FRPCell.h"
@@ -67,7 +69,11 @@ static NSString *CellIdentifier = @"Cell";
     
     [[self rac_signalForSelector:@selector(collectionView:didSelectItemAtIndexPath:) fromProtocol:@protocol(UICollectionViewDelegate)] subscribeNext:^(RACTuple *arguments) {
         @strongify(self);
-        FRPFullSizePhotoViewController *viewController = [[FRPFullSizePhotoViewController alloc] initWithPhotoModels:self.viewModel.photosArray currentPhotoIndex:[(NSIndexPath *)arguments.second item]];
+        
+        FRPFullSizePhotoViewModel *viewModel = [[FRPFullSizePhotoViewModel alloc] initWithPhotoModelArray:self.viewModel.photosArray initialPhotoIndex:[(NSIndexPath *)arguments.second item]];
+        
+        FRPFullSizePhotoViewController *viewController = [[FRPFullSizePhotoViewController alloc] init];
+        viewController.viewModel = viewModel;
         viewController.delegate = (id<FRPFullSizePhotoViewControllerDelegate>)self;
         [self.navigationController pushViewController:viewController animated:YES];
     }];

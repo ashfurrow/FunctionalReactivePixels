@@ -13,11 +13,9 @@
 
 // Models
 #import "FRPPhotoModel.h"
+#import "FRPFullSizePhotoViewModel.h"
 
 @interface FRPFullSizePhotoViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
-
-// Private assignment
-@property (nonatomic, strong) NSArray *photoModelArray;
 
 // Private properties
 @property (nonatomic, strong) UIPageViewController *pageViewController;
@@ -26,24 +24,16 @@
 
 @implementation FRPFullSizePhotoViewController
 
--(instancetype)initWithPhotoModels:(NSArray *)photoModelArray currentPhotoIndex:(NSInteger)photoIndex
+-(instancetype)init
 {
-    self = [self init];
+    self = [super init];
     if (!self) return nil;
-    
-    // Initialized, read-only properties
-    self.photoModelArray = photoModelArray;
-    
-    // Configure self
-    self.title = [self.photoModelArray[photoIndex] photoName];
     
     // View controllers
     self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:@{UIPageViewControllerOptionInterPageSpacingKey: @(30)}];
     self.pageViewController.dataSource = self;
     self.pageViewController.delegate = self;
     [self addChildViewController:self.pageViewController];
-    
-    [self.pageViewController setViewControllers:@[[self photoViewControllerForIndex:photoIndex]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     return self;
 }
@@ -52,7 +42,12 @@
 {
     [super viewDidLoad];
     
+    // Configure child view controllers
+    [self.pageViewController setViewControllers:@[[self photoViewControllerForIndex:self.viewModel.initialPhotoIndex]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    
     // Configure self
+    self.title = [self.viewModel.initialPhotoModel photoName];
+    
     @weakify(self);
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
     infoButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
@@ -82,8 +77,8 @@
 #pragma mark - Private Methods
 
 -(FRPPhotoViewController *)photoViewControllerForIndex:(NSInteger)index {
-    if (index >= 0 && index < self.photoModelArray.count) {
-        FRPPhotoModel *photoModel = self.photoModelArray[index];
+    if (index >= 0 && index < self.viewModel.photoArray.count) {
+        FRPPhotoModel *photoModel = self.viewModel.photoArray[index];
         
         FRPPhotoViewController *photoViewController = [[FRPPhotoViewController alloc] initWithPhotoModel:photoModel index:index];
         return photoViewController;

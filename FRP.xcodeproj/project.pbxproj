@@ -15,6 +15,7 @@
 		5E59511F18121D09002F44FA /* FRPLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E59511E18121D09002F44FA /* FRPLoginViewController.xib */; };
 		5E730B0E1815F3E4003FCB43 /* FRPGalleryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E730B0D1815F3E4003FCB43 /* FRPGalleryViewModel.m */; };
 		5E730B101815F78B003FCB43 /* FRPGalleryViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E730B0F1815F78B003FCB43 /* FRPGalleryViewModelTests.m */; };
+		5E730B141815FE97003FCB43 /* FRPFullSizePhotoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E730B131815FE97003FCB43 /* FRPFullSizePhotoViewModel.m */; };
 		5EBC599E180B247500B683A7 /* FRPCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC599D180B247500B683A7 /* FRPCell.m */; };
 		5EBC59A6180B2AA200B683A7 /* FRPPhotoImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC59A5180B2AA200B683A7 /* FRPPhotoImporter.m */; };
 		5EBC59A9180B2C4F00B683A7 /* FRPGalleryFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC59A8180B2C4F00B683A7 /* FRPGalleryFlowLayout.m */; };
@@ -57,6 +58,8 @@
 		5E730B0C1815F3E4003FCB43 /* FRPGalleryViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPGalleryViewModel.h; sourceTree = "<group>"; };
 		5E730B0D1815F3E4003FCB43 /* FRPGalleryViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPGalleryViewModel.m; sourceTree = "<group>"; };
 		5E730B0F1815F78B003FCB43 /* FRPGalleryViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPGalleryViewModelTests.m; sourceTree = "<group>"; };
+		5E730B121815FE97003FCB43 /* FRPFullSizePhotoViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPFullSizePhotoViewModel.h; sourceTree = "<group>"; };
+		5E730B131815FE97003FCB43 /* FRPFullSizePhotoViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPFullSizePhotoViewModel.m; sourceTree = "<group>"; };
 		5EBC599C180B247500B683A7 /* FRPCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPCell.h; sourceTree = "<group>"; };
 		5EBC599D180B247500B683A7 /* FRPCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPCell.m; sourceTree = "<group>"; };
 		5EBC59A0180B268600B683A7 /* FRPPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPPhotoModel.h; sourceTree = "<group>"; };
@@ -120,8 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				5E730B0B1815F39D003FCB43 /* Gallery */,
-				5E59510F180E065F002F44FA /* FRPFullSizePhotoViewController.h */,
-				5E595110180E065F002F44FA /* FRPFullSizePhotoViewController.m */,
+				5E730B111815FE81003FCB43 /* Full Size Photo */,
 				5E595115180E0C33002F44FA /* FRPPhotoViewController.h */,
 				5E595116180E0C33002F44FA /* FRPPhotoViewController.m */,
 				5E595118180E21E0002F44FA /* FRPPhotoDetailViewController.h */,
@@ -142,6 +144,17 @@
 				5E730B0D1815F3E4003FCB43 /* FRPGalleryViewModel.m */,
 			);
 			name = Gallery;
+			sourceTree = "<group>";
+		};
+		5E730B111815FE81003FCB43 /* Full Size Photo */ = {
+			isa = PBXGroup;
+			children = (
+				5E59510F180E065F002F44FA /* FRPFullSizePhotoViewController.h */,
+				5E595110180E065F002F44FA /* FRPFullSizePhotoViewController.m */,
+				5E730B121815FE97003FCB43 /* FRPFullSizePhotoViewModel.h */,
+				5E730B131815FE97003FCB43 /* FRPFullSizePhotoViewModel.m */,
+			);
+			name = "Full Size Photo";
 			sourceTree = "<group>";
 		};
 		5EBC599F180B267400B683A7 /* UICollectionView Extensions */ = {
@@ -418,6 +431,7 @@
 				5E595117180E0C33002F44FA /* FRPPhotoViewController.m in Sources */,
 				5EBC59A6180B2AA200B683A7 /* FRPPhotoImporter.m in Sources */,
 				5EBE2B2B180B0AF1007B6BF3 /* FRPGalleryViewController.m in Sources */,
+				5E730B141815FE97003FCB43 /* FRPFullSizePhotoViewModel.m in Sources */,
 				5EBE2B07180B07D0007B6BF3 /* FRPAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
