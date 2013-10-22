@@ -10,6 +10,7 @@
 
 // Model
 #import "FRPPhotoModel.h"
+#import "FRPPhotoViewModel.h"
 
 // Utilities
 #import "FRPPhotoImporter.h"
@@ -19,7 +20,7 @@
 
 // Private assignment
 @property (nonatomic, assign) NSInteger photoIndex;
-@property (nonatomic, strong) FRPPhotoModel *photoModel;
+@property (nonatomic, strong) FRPPhotoViewModel *viewModel;
 
 // Private properties
 @property (nonatomic, weak) UIImageView *imageView;
@@ -28,12 +29,12 @@
 
 @implementation FRPPhotoViewController
 
--(instancetype)initWithPhotoModel:(FRPPhotoModel *)photoModel index:(NSInteger)photoIndex
+-(instancetype)initWithViewModel:(FRPPhotoViewModel *)viewModel index:(NSInteger)photoIndex
 {
     self = [self init];
     if (!self) return nil;
     
-    self.photoModel = photoModel;
+    self.viewModel = viewModel;
     self.photoIndex = photoIndex;
     
     return self;
@@ -48,27 +49,26 @@
     
     // Configure subviews
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    RAC(imageView, image) = [RACObserve(self.photoModel, fullsizedData) map:^id(id value) {
-        return [UIImage imageWithData:value];
-    }];
+    RAC(imageView, image) = self.viewModel.photoImageSignal;
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:imageView];
     self.imageView = imageView;
-}
-
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     
-    if (!self.presentedViewController) {
-        [SVProgressHUD show];
-        
-        // Fetch data
-        [[FRPPhotoImporter fetchPhotoDetails:self.photoModel] subscribeError:^(NSError *error) {
-            [SVProgressHUD showErrorWithStatus:@"Error"];
-        } completed:^{
-            [SVProgressHUD dismiss];
-        }];
-    }
+    @weakify(self);
+    [[self rac_signalForSelector:@selector(viewDidAppear:)] subscribeNext:^(id x) {
+        @strongify(self);
+        if (!self.presentedViewController) {
+            [SVProgressHUD show];
+            
+            [self.viewModel.viewDidAppearCommand execute:nil];
+        }
+    }];
+    [self.viewModel.viewDidAppearCommand.executionSignals subscribeCompleted:^{
+        [SVProgressHUD dismiss];
+    }];
+    [self.viewModel.viewDidAppearCommand.errors subscribeNext:^(id x) {
+        [SVProgressHUD showErrorWithStatus:@"Error"];
+    }];
 }
 
 @end
