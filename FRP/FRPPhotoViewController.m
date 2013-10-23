@@ -63,7 +63,9 @@
         }
     }];
     [self.viewModel.viewDidAppearCommand.executionSignals subscribeNext:^(id x) {
-        [SVProgressHUD dismiss];
+        [x subscribeCompleted:^{
+            [SVProgressHUD dismiss];
+        }];
     }];
     [self.viewModel.viewDidAppearCommand.errors subscribeNext:^(id x) {
         [SVProgressHUD showErrorWithStatus:@"Error"];
