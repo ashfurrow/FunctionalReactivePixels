@@ -14,6 +14,7 @@
 
 -(instancetype)initWithPhotoModel:(FRPPhotoModel *)photoModel;
 
+@property (nonatomic, readonly) FRPPhotoModel *photoModel;
 @property (nonatomic, readonly) RACCommand *viewDidAppearCommand;
 @property (nonatomic, readonly) RACSignal *photoImageSignal;
 

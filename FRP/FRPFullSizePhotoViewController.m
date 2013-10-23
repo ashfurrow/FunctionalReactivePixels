@@ -15,6 +15,7 @@
 #import "FRPPhotoModel.h"
 #import "FRPFullSizePhotoViewModel.h"
 #import "FRPPhotoViewModel.h"
+#import "FRPPhotoDetailViewModel.h"
 
 @interface FRPFullSizePhotoViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
@@ -55,7 +56,12 @@
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             @strongify(self);
             
-            FRPPhotoDetailViewController *viewController = [[FRPPhotoDetailViewController alloc] initWithPhotoModel:[self.pageViewController.viewControllers.firstObject photoModel]];
+            FRPPhotoViewController *photoViewController = self.pageViewController.viewControllers.firstObject;
+            FRPPhotoModel *photoModel = photoViewController.viewModel.photoModel;
+            
+            FRPPhotoDetailViewModel *viewModel = [[FRPPhotoDetailViewModel alloc] initWithPhotoModel:photoModel];
+            
+            FRPPhotoDetailViewController *viewController = [[FRPPhotoDetailViewController alloc] initWithViewModel:viewModel];
             UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
             
             [self presentViewController:navigationController animated:YES completion:^{

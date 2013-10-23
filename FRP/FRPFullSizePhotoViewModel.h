@@ -16,7 +16,6 @@
 
 @property (nonatomic, readonly) NSInteger initialPhotoIndex;
 
--(NSInteger)numberOfPhotos;
 -(FRPPhotoModel *)initialPhotoModel;
 -(FRPPhotoModel *)photoModelAtIndex:(NSInteger)index;
 

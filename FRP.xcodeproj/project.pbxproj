@@ -18,6 +18,7 @@
 		5E730B141815FE97003FCB43 /* FRPFullSizePhotoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E730B131815FE97003FCB43 /* FRPFullSizePhotoViewModel.m */; };
 		5EAD1F5818173A3200C67860 /* FRPPhotoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EAD1F5718173A3200C67860 /* FRPPhotoViewModel.m */; };
 		5EAD1F5C18173F1500C67860 /* FRPLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EAD1F5B18173F1500C67860 /* FRPLoginViewModel.m */; };
+		5EAD1F601817418800C67860 /* FRPPhotoDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EAD1F5F1817418800C67860 /* FRPPhotoDetailViewModel.m */; };
 		5EBC599E180B247500B683A7 /* FRPCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC599D180B247500B683A7 /* FRPCell.m */; };
 		5EBC59A6180B2AA200B683A7 /* FRPPhotoImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC59A5180B2AA200B683A7 /* FRPPhotoImporter.m */; };
 		5EBC59A9180B2C4F00B683A7 /* FRPGalleryFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBC59A8180B2C4F00B683A7 /* FRPGalleryFlowLayout.m */; };
@@ -66,6 +67,8 @@
 		5EAD1F5718173A3200C67860 /* FRPPhotoViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPPhotoViewModel.m; sourceTree = "<group>"; };
 		5EAD1F5A18173F1500C67860 /* FRPLoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPLoginViewModel.h; sourceTree = "<group>"; };
 		5EAD1F5B18173F1500C67860 /* FRPLoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPLoginViewModel.m; sourceTree = "<group>"; };
+		5EAD1F5E1817418800C67860 /* FRPPhotoDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPPhotoDetailViewModel.h; sourceTree = "<group>"; };
+		5EAD1F5F1817418800C67860 /* FRPPhotoDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPPhotoDetailViewModel.m; sourceTree = "<group>"; };
 		5EBC599C180B247500B683A7 /* FRPCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPCell.h; sourceTree = "<group>"; };
 		5EBC599D180B247500B683A7 /* FRPCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPCell.m; sourceTree = "<group>"; };
 		5EBC59A0180B268600B683A7 /* FRPPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPPhotoModel.h; sourceTree = "<group>"; };
@@ -131,8 +134,7 @@
 				5E730B0B1815F39D003FCB43 /* Gallery */,
 				5E730B111815FE81003FCB43 /* Full Size Photo */,
 				5EAD1F5518173A1E00C67860 /* Photo View Controller */,
-				5E595118180E21E0002F44FA /* FRPPhotoDetailViewController.h */,
-				5E595119180E21E0002F44FA /* FRPPhotoDetailViewController.m */,
+				5EAD1F5D1817417B00C67860 /* Photo Details */,
 				5EAD1F5918173E9700C67860 /* Login */,
 			);
 			name = "View Controllers";
@@ -181,6 +183,17 @@
 				5EAD1F5B18173F1500C67860 /* FRPLoginViewModel.m */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		5EAD1F5D1817417B00C67860 /* Photo Details */ = {
+			isa = PBXGroup;
+			children = (
+				5E595118180E21E0002F44FA /* FRPPhotoDetailViewController.h */,
+				5E595119180E21E0002F44FA /* FRPPhotoDetailViewController.m */,
+				5EAD1F5E1817418800C67860 /* FRPPhotoDetailViewModel.h */,
+				5EAD1F5F1817418800C67860 /* FRPPhotoDetailViewModel.m */,
+			);
+			name = "Photo Details";
 			sourceTree = "<group>";
 		};
 		5EBC599F180B267400B683A7 /* UICollectionView Extensions */ = {
@@ -451,6 +464,7 @@
 				5E595111180E065F002F44FA /* FRPFullSizePhotoViewController.m in Sources */,
 				5EBC59A9180B2C4F00B683A7 /* FRPGalleryFlowLayout.m in Sources */,
 				5EAD1F5C18173F1500C67860 /* FRPLoginViewModel.m in Sources */,
+				5EAD1F601817418800C67860 /* FRPPhotoDetailViewModel.m in Sources */,
 				5E59511D181219AC002F44FA /* FRPLoginViewController.m in Sources */,
 				5EBE2B03180B07D0007B6BF3 /* main.m in Sources */,
 				5E730B0E1815F3E4003FCB43 /* FRPGalleryViewModel.m in Sources */,

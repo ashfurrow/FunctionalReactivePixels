@@ -11,27 +11,26 @@
 #import "FRPLoginViewController.h"
 
 // Model
-#import "FRPPhotoModel.h"
+#import "FRPPhotoDetailViewModel.h"
 
 // Utilities
-#import "FRPPhotoImporter.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
 @interface FRPPhotoDetailViewController ()
 
 // Private assignment
-@property (nonatomic, strong) FRPPhotoModel *photoModel;
+@property (nonatomic, strong) FRPPhotoDetailViewModel *viewModel;
 
 @end
 
 @implementation FRPPhotoDetailViewController
 
--(instancetype)initWithPhotoModel:(FRPPhotoModel *)photoModel
+-(instancetype)initWithViewModel:(FRPPhotoDetailViewModel *)viewModel
 {
     self = [self init];
     if (!self) return nil;
     
-    self.photoModel = photoModel;
+    self.viewModel = viewModel;
     
     return self;
 }
@@ -43,7 +42,7 @@
     @weakify(self);
     
     // Configure self
-    self.title = self.photoModel.photoName;
+    self.title = self.viewModel.photoName;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:nil action:nil];
     self.navigationItem.rightBarButtonItem.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
@@ -61,23 +60,21 @@
     
     // Configure subviews
     UILabel *ratingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), 100)];
-    RAC(ratingLabel, text) = [RACObserve(self.photoModel, rating) map:^id(id value) {
-        return [NSString stringWithFormat:@"%0.2f", [value floatValue]];
-    }];
+    RAC(ratingLabel, text) = RACObserve(self.viewModel, photoRating);
     ratingLabel.font = [UIFont boldSystemFontOfSize:80];
     ratingLabel.textColor = [UIColor whiteColor];
     ratingLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:ratingLabel];
     
     UILabel *photoNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(ratingLabel.frame), CGRectGetWidth(self.view.bounds), 20)];
-    RAC(photoNameLabel, text) = RACObserve(self.photoModel, photoName);
+    RAC(photoNameLabel, text) = RACObserve(self.viewModel, photoName);
     photoNameLabel.font = [UIFont systemFontOfSize:16];
     photoNameLabel.textColor = [UIColor whiteColor];
     photoNameLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:photoNameLabel];
     
     UILabel *photographerNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(photoNameLabel.frame), CGRectGetWidth(self.view.bounds), 20)];
-    RAC(photographerNameLabel, text) = RACObserve(self.photoModel, photographerName);
+    RAC(photographerNameLabel, text) = RACObserve(self.viewModel, photographerName);
     photographerNameLabel.font = [UIFont systemFontOfSize:16];
     photographerNameLabel.textColor = [UIColor colorWithWhite:0.5f alpha:1.0f];
     photographerNameLabel.textAlignment = NSTextAlignmentCenter;
@@ -87,14 +84,10 @@
     voteButton.frame = CGRectMake(20, CGRectGetHeight(self.view.bounds) - 44 - 20, CGRectGetWidth(self.view.bounds) - 40, 44);
     voteButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     // Note: can't use getter keypath
-    [RACObserve(self.photoModel, votedFor) subscribeNext:^(id x) {
-        if ([x boolValue]) {
-            [voteButton setTitle:@"Voted For!" forState:UIControlStateNormal];
-        } else {
-            [voteButton setTitle:@"Vote" forState:UIControlStateNormal];
-        }
+    [RACObserve(self.viewModel, voteButtonText) subscribeNext:^(id value) {
+            [voteButton setTitle:value forState:UIControlStateNormal];
     }];
-    voteButton.rac_command = [[RACCommand alloc] initWithEnabled:[RACObserve(self.photoModel, isVotedFor) not] signalBlock:^RACSignal *(id input) {
+    voteButton.rac_command = [[RACCommand alloc] initWithEnabled:self.viewModel.ableToVoteSignal signalBlock:^RACSignal *(id input) {
         // Assume that we're logged in at first. We'll replace this signal later if not.
         RACSignal *authSignal = [RACSignal empty];
         
@@ -120,7 +113,8 @@
         
         return [authSignal then:^RACSignal *{
             @strongify(self);
-            return [FRPPhotoImporter voteForPhoto:self.photoModel];
+            [self.viewModel.voteCommand execute:nil];
+            return [RACSignal empty];
         }];
     }];
     [voteButton.rac_command.errors subscribeNext:^(id x) {
