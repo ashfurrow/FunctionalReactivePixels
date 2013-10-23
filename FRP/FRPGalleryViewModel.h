@@ -10,6 +10,6 @@
 
 @interface FRPGalleryViewModel : NSObject
 
-@property (nonatomic, strong) NSArray *photosArray;
+@property (nonatomic, readonly) NSArray *photosArray;
 
 @end

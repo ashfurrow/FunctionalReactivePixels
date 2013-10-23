@@ -11,6 +11,12 @@
 // Utilities
 #import "FRPPhotoImporter.h"
 
+@interface FRPGalleryViewModel ()
+
+@property (nonatomic, strong) NSArray *photosArray;
+
+@end
+
 @implementation FRPGalleryViewModel
 
 -(instancetype)init {
