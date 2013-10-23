@@ -13,7 +13,6 @@
 #import "FRPPhotoViewModel.h"
 
 // Utilities
-#import "FRPPhotoImporter.h"
 #import <SVProgressHUD.h>
 
 @interface FRPPhotoViewController ()

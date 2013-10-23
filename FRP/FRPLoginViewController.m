@@ -9,7 +9,6 @@
 #import "FRPLoginViewController.h"
 
 // Utilities
-#import "FRPPhotoImporter.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
 // View Model
