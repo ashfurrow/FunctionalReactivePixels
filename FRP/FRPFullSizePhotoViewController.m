@@ -12,7 +12,6 @@
 #import "FRPPhotoDetailViewController.h"
 
 // Models
-#import "FRPPhotoModel.h"
 #import "FRPFullSizePhotoViewModel.h"
 #import "FRPPhotoViewModel.h"
 #import "FRPPhotoDetailViewModel.h"

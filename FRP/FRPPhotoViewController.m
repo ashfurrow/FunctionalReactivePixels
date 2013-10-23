@@ -9,7 +9,6 @@
 #import "FRPPhotoViewController.h"
 
 // Model
-#import "FRPPhotoModel.h"
 #import "FRPPhotoViewModel.h"
 
 // Utilities
