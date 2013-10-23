@@ -48,7 +48,7 @@
     [self.pageViewController setViewControllers:@[[self photoViewControllerForIndex:self.viewModel.initialPhotoIndex]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     // Configure self
-    self.title = [self.viewModel.initialPhotoModel photoName];
+    self.title = self.viewModel.initialPhotoName;
     
     @weakify(self);
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];

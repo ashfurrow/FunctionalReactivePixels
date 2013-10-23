@@ -16,7 +16,7 @@
 
 @property (nonatomic, readonly) NSInteger initialPhotoIndex;
 
--(FRPPhotoModel *)initialPhotoModel;
+@property (nonatomic, readonly) NSString *initialPhotoName;
 -(FRPPhotoModel *)photoModelAtIndex:(NSInteger)index;
 
 @end
