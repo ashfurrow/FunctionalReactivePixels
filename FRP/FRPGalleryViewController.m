@@ -70,7 +70,8 @@ static NSString *CellIdentifier = @"Cell";
     [[self rac_signalForSelector:@selector(collectionView:didSelectItemAtIndexPath:) fromProtocol:@protocol(UICollectionViewDelegate)] subscribeNext:^(RACTuple *arguments) {
         @strongify(self);
         
-        FRPFullSizePhotoViewModel *viewModel = [[FRPFullSizePhotoViewModel alloc] initWithPhotoModelArray:self.viewModel.photosArray initialPhotoIndex:[(NSIndexPath *)arguments.second item]];
+        NSIndexPath *indexPath = arguments.second;
+        FRPFullSizePhotoViewModel *viewModel = [[FRPFullSizePhotoViewModel alloc] initWithPhotoModelArray:self.viewModel.photosArray initialPhotoIndex:indexPath.item];
         
         FRPFullSizePhotoViewController *viewController = [[FRPFullSizePhotoViewController alloc] init];
         viewController.viewModel = viewModel;
