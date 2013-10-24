@@ -14,7 +14,7 @@
 
 @interface FRPPhotoViewModel ()
 
-@property (nonatomic, strong) RACCommand *viewDidAppearCommand;
+@property (nonatomic, strong) RACCommand *loadPhotosFromNetworkCommand;
 @property (nonatomic, strong) FRPPhotoModel *photoModel;
 @property (nonatomic, strong) RACSignal *photoImageSignal;
 
@@ -29,7 +29,7 @@
     self.photoModel = photoModel;
     
     @weakify(self);
-    self.viewDidAppearCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+    self.loadPhotosFromNetworkCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             @strongify(self);
             // Fetch data

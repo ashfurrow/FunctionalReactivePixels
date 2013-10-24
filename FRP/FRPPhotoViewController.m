@@ -58,15 +58,15 @@
         if (!self.presentedViewController) {
             [SVProgressHUD show];
             
-            [self.viewModel.viewDidAppearCommand execute:nil];
+            [self.viewModel.loadPhotosFromNetworkCommand execute:nil];
         }
     }];
-    [self.viewModel.viewDidAppearCommand.executionSignals subscribeNext:^(id x) {
+    [self.viewModel.loadPhotosFromNetworkCommand.executionSignals subscribeNext:^(id x) {
         [x subscribeCompleted:^{
             [SVProgressHUD dismiss];
         }];
     }];
-    [self.viewModel.viewDidAppearCommand.errors subscribeNext:^(id x) {
+    [self.viewModel.loadPhotosFromNetworkCommand.errors subscribeNext:^(id x) {
         [SVProgressHUD showErrorWithStatus:@"Error"];
     }];
 }
