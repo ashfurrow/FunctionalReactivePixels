@@ -21,7 +21,7 @@
 @property (nonatomic, strong) NSString *photoName;
 @property (nonatomic, strong) NSString *photoRating;
 @property (nonatomic, strong) NSString *photographerName;
-@property (nonatomic, strong) NSString *voteButtonText;
+@property (nonatomic, strong) NSString *votePromptText;
 
 @property (nonatomic, strong) RACCommand *voteCommand;
 

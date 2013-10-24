@@ -19,7 +19,7 @@
 @property (nonatomic, readonly) NSString *photoName;
 @property (nonatomic, readonly) NSString *photoRating;
 @property (nonatomic, readonly) NSString *photographerName;
-@property (nonatomic, readonly) NSString *voteButtonText;
+@property (nonatomic, readonly) NSString *votePromptText;
 
 @property (nonatomic, readonly) RACCommand *voteCommand;
 
