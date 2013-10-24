@@ -24,6 +24,5 @@
 @property (nonatomic, readonly) RACCommand *voteCommand;
 
 @property (nonatomic, readonly) BOOL loggedIn;
-@property (nonatomic, readonly) RACSignal *ableToVoteSignal;
 
 @end

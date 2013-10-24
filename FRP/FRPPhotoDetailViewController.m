@@ -87,7 +87,7 @@
     [RACObserve(self.viewModel, voteButtonText) subscribeNext:^(id value) {
             [voteButton setTitle:value forState:UIControlStateNormal];
     }];
-    voteButton.rac_command = [[RACCommand alloc] initWithEnabled:self.viewModel.ableToVoteSignal signalBlock:^RACSignal *(id input) {
+    voteButton.rac_command = [[RACCommand alloc] initWithEnabled:self.viewModel.voteCommand.enabled signalBlock:^RACSignal *(id input) {
         // Assume that we're logged in at first. We'll replace this signal later if not.
         RACSignal *authSignal = [RACSignal empty];
         

@@ -25,8 +25,6 @@
 
 @property (nonatomic, strong) RACCommand *voteCommand;
 
-@property (nonatomic, strong) RACSignal *ableToVoteSignal;
-
 @end
 
 @implementation FRPPhotoDetailViewModel
@@ -51,13 +49,10 @@
     }];
     
     @weakify(self);
-    self.voteCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        
+    self.voteCommand = [[RACCommand alloc] initWithEnabled:[RACObserve(self.photoModel, votedFor) not] signalBlock:^RACSignal *(id input) {
         @strongify(self);
         return [FRPPhotoImporter voteForPhoto:self.photoModel];
     }];
-    
-    self.ableToVoteSignal = [RACObserve(self.photoModel, votedFor) not];
     
     return self;
 }
