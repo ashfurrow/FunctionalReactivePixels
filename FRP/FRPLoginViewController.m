@@ -48,11 +48,13 @@
     RAC(self.viewModel, username) = self.usernameTextField.rac_textSignal;
     RAC(self.viewModel, password) = self.passwordTextField.rac_textSignal;
     self.navigationItem.rightBarButtonItem.rac_command = self.viewModel.loginCommand;
-    [self.viewModel.loginCommand.executionSignals subscribeNext:^(id x) {
-        [x subscribeCompleted:^{
-            @strongify(self);
-            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-        }];
+    
+    [[self.viewModel.loginCommand.executionSignals flattenMap:^(RACSignal *execution) {
+        // Sends RACUnit after the execution completes.
+        return [[execution ignoreValues] concat:[RACSignal return:RACUnit.defaultUnit]];
+    }] subscribeNext:^(id _) {
+        @strongify(self);
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     }];
     [self.viewModel.loginCommand.errors subscribeNext:^(id x) {
         NSLog(@"Login error: %@", x);
