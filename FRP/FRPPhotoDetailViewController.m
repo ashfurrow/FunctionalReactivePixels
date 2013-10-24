@@ -84,7 +84,7 @@
     voteButton.frame = CGRectMake(20, CGRectGetHeight(self.view.bounds) - 44 - 20, CGRectGetWidth(self.view.bounds) - 40, 44);
     voteButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     // Note: can't use getter keypath
-    [RACObserve(self.viewModel, voteButtonText) subscribeNext:^(id value) {
+    [RACObserve(self.viewModel, votePromptText) subscribeNext:^(id value) {
             [voteButton setTitle:value forState:UIControlStateNormal];
     }];
     voteButton.rac_command = [[RACCommand alloc] initWithEnabled:self.viewModel.voteCommand.enabled signalBlock:^RACSignal *(id input) {
