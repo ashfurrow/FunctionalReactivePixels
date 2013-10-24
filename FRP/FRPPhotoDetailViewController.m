@@ -113,8 +113,7 @@
         
         return [authSignal then:^RACSignal *{
             @strongify(self);
-            [self.viewModel.voteCommand execute:nil];
-            return [RACSignal empty];
+            return [[self.viewModel.voteCommand execute:nil] ignoreValues];
         }];
     }];
     [voteButton.rac_command.errors subscribeNext:^(id x) {
