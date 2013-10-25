@@ -56,7 +56,7 @@
             @strongify(self);
             
             FRPPhotoViewController *photoViewController = self.pageViewController.viewControllers.firstObject;
-            FRPPhotoModel *photoModel = photoViewController.viewModel.photoModel;
+            FRPPhotoModel *photoModel = photoViewController.viewModel.model;
             
             FRPPhotoDetailViewModel *viewModel = [[FRPPhotoDetailViewModel alloc] initWithPhotoModel:photoModel];
             
@@ -85,7 +85,7 @@
 -(FRPPhotoViewController *)photoViewControllerForIndex:(NSInteger)index {
     FRPPhotoModel *photoModel = [self.viewModel photoModelAtIndex:index];
     if (photoModel) {
-        FRPPhotoViewModel *photoViewModel = [[FRPPhotoViewModel alloc] initWithPhotoModel:photoModel];
+        FRPPhotoViewModel *photoViewModel = [[FRPPhotoViewModel alloc] initWithModel:photoModel];
         FRPPhotoViewController *photoViewController = [[FRPPhotoViewController alloc] initWithViewModel:photoViewModel index:index];
         return photoViewController;
     }

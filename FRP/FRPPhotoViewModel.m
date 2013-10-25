@@ -14,8 +14,6 @@
 
 @interface FRPPhotoViewModel ()
 
-@property (nonatomic, strong) RACCommand *loadPhotosFromNetworkCommand;
-@property (nonatomic, strong) FRPPhotoModel *photoModel;
 @property (nonatomic, strong) RACSignal *photoImageSignal;
 
 @end
@@ -23,27 +21,20 @@
 @implementation FRPPhotoViewModel
 
 -(instancetype)initWithPhotoModel:(FRPPhotoModel *)photoModel {
-    self = [self init];
+    self = [self initWithModel:photoModel];
     if (!self) return nil;
     
-    self.photoModel = photoModel;
-    
     @weakify(self);
-    self.loadPhotosFromNetworkCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            @strongify(self);
-            // Fetch data
-            [[FRPPhotoImporter fetchPhotoDetails:self.photoModel] subscribeError:^(NSError *error) {
-                [subscriber sendError:nil];
-            } completed:^{
-                [subscriber sendCompleted];
-            }];
-            
-            return nil;
+    [self.didBecomeActiveSignal subscribeNext:^(id x) {
+        @strongify(self);
+        [[FRPPhotoImporter fetchPhotoDetails:self.model] subscribeError:^(NSError *error) {
+            NSLog(@"Could not fetch photo details: %@", error);
+        } completed:^{
+            NSLog(@"Fetched photo details.");
         }];
     }];
-
-    self.photoImageSignal = [RACObserve(self.photoModel, fullsizedData) map:^id(id value) {
+    
+    self.photoImageSignal = [RACObserve(self.model, fullsizedData) map:^id(id value) {
         return [UIImage imageWithData:value];
     }];
 
@@ -51,7 +42,7 @@
 }
 
 -(NSString *)photoName {
-    return self.photoModel.photoName;
+    return self.model.photoName;
 }
 
 @end

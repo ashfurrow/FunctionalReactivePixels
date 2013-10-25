@@ -52,22 +52,8 @@
     [self.view addSubview:imageView];
     self.imageView = imageView;
     
-    @weakify(self);
-    [[self rac_signalForSelector:@selector(viewDidAppear:)] subscribeNext:^(id x) {
-        @strongify(self);
-        if (self.presentedViewController == nil) {
-            [SVProgressHUD show];
-            
-            [self.viewModel.loadPhotosFromNetworkCommand execute:nil];
-        }
-    }];
-    [self.viewModel.loadPhotosFromNetworkCommand.executionSignals subscribeNext:^(id x) {
-        [x subscribeCompleted:^{
-            [SVProgressHUD dismiss];
-        }];
-    }];
-    [self.viewModel.loadPhotosFromNetworkCommand.errors subscribeNext:^(id x) {
-        [SVProgressHUD showErrorWithStatus:@"Error"];
+    [self.viewModel.didBecomeActiveSignal subscribeNext:^(id x) {
+        [SVProgressHUD dismiss];
     }];
 }
 

@@ -10,12 +10,10 @@
 
 @class FRPPhotoModel;
 
-@interface FRPPhotoViewModel : NSObject
+@interface FRPPhotoViewModel : RVMViewModel
 
--(instancetype)initWithPhotoModel:(FRPPhotoModel *)photoModel;
+@property (nonatomic, readonly) FRPPhotoModel *model;
 
-@property (nonatomic, readonly) FRPPhotoModel *photoModel;
-@property (nonatomic, readonly) RACCommand *loadPhotosFromNetworkCommand;
 @property (nonatomic, readonly) RACSignal *photoImageSignal;
 
 -(NSString *)photoName;
