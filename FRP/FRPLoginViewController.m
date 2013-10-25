@@ -9,25 +9,35 @@
 #import "FRPLoginViewController.h"
 
 // Utilities
-#import "FRPPhotoImporter.h"
 #import <SVProgressHUD/SVProgressHUD.h>
+
+// View Model
+#import "FRPLoginViewModel.h"
 
 @interface FRPLoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 
+@property (nonatomic, strong) FRPLoginViewModel *viewModel;
+
 @end
 
 @implementation FRPLoginViewController
+
+-(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (!self) return nil;
+    
+    self.viewModel = [FRPLoginViewModel new];
+    
+    return self;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
-    // Configure self's view
-//    self.view.backgroundColor = [UIColor blackColor];
     
     // Configure navigation item
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Log In" style:UIBarButtonItemStylePlain target:nil action:nil];
@@ -35,20 +45,18 @@
     
     // Reactive Stuff
     @weakify(self);
-    RACSignal *enabledSignal = [RACSignal combineLatest:@[self.usernameTextField.rac_textSignal, self.passwordTextField.rac_textSignal] reduce:^id(NSString *username, NSString *password){
-        return @(username.length > 0 && password.length > 0);
-    }];
-    self.navigationItem.rightBarButtonItem.rac_command = [[RACCommand alloc] initWithEnabled:enabledSignal signalBlock:^RACSignal *(id input) {
+    RAC(self.viewModel, username) = self.usernameTextField.rac_textSignal;
+    RAC(self.viewModel, password) = self.passwordTextField.rac_textSignal;
+    self.navigationItem.rightBarButtonItem.rac_command = self.viewModel.loginCommand;
+    
+    [[self.viewModel.loginCommand.executionSignals flattenMap:^(RACSignal *execution) {
+        // Sends RACUnit after the execution completes.
+        return [[execution ignoreValues] concat:[RACSignal return:RACUnit.defaultUnit]];
+    }] subscribeNext:^(id _) {
         @strongify(self);
-        return [FRPPhotoImporter logInWithUsername:self.usernameTextField.text password:self.passwordTextField.text];
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     }];
-    [self.navigationItem.rightBarButtonItem.rac_command.executionSignals subscribeNext:^(id x) {
-        [x subscribeCompleted:^{
-            @strongify(self);
-            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-        }];
-    }];
-    [self.navigationItem.rightBarButtonItem.rac_command.errors subscribeNext:^(id x) {
+    [self.viewModel.loginCommand.errors subscribeNext:^(id x) {
         NSLog(@"Login error: %@", x);
     }];
     
@@ -63,12 +71,6 @@
             return nil;
         }];
     }];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class FRPPhotoModel;
+@class FRPPhotoDetailViewModel;
 
 @interface FRPPhotoDetailViewController : UIViewController
 
--(instancetype)initWithPhotoModel:(FRPPhotoModel *)photoModel;
+-(instancetype)initWithViewModel:(FRPPhotoDetailViewModel *)viewModel;
 
-@property (nonatomic, readonly) FRPPhotoModel *photoModel;
+@property (nonatomic, readonly) FRPPhotoDetailViewModel *viewModel;
 
 @end

@@ -1,5 +1,6 @@
 PODS:
   - 500px-iOS-api (1.0.5)
+  - Expecta (0.2.3)
   - libextobjc (0.3):
     - libextobjc/EXTADT
     - libextobjc/EXTAnnotation
@@ -85,25 +86,33 @@ PODS:
   - libextobjc/RuntimeExtensions (0.3)
   - libextobjc/UmbrellaHeader (0.3)
   - libffi (3.0.13)
-  - ReactiveCocoa (2.1.3):
+  - OCMock (2.0.1)
+  - ReactiveCocoa (2.1.4):
     - ReactiveCocoa/Core
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/Core (2.1.3):
+  - ReactiveCocoa/Core (2.1.4):
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.1.3)
+  - ReactiveCocoa/no-arc (2.1.4)
+  - Specta (0.1.11)
   - SVProgressHUD (0.9)
 
 DEPENDENCIES:
   - 500px-iOS-api (= 1.0.5)
+  - Expecta (~> 0.2)
   - libextobjc (= 0.3)
-  - ReactiveCocoa (= 2.1.3)
+  - OCMock (~> 2.0.1)
+  - ReactiveCocoa (= 2.1.4)
+  - Specta (~> 0.1.11)
   - SVProgressHUD (= 0.9)
 
 SPEC CHECKSUMS:
   500px-iOS-api: b67f7b641d79737eb26478d4e07cc1610314521c
+  Expecta: dbc4a27fabb853bdd2e907e33f11ee43a9a47d0c
   libextobjc: 820a79dbbbc498611e04fffd07d2d52a5588e7ac
   libffi: 64ef39353e747bb2b25e1026afd96a157bf9231c
-  ReactiveCocoa: 0142b823f4737effe6100f9fbb0a43bdcb629aae
+  OCMock: f0c099603f851d07f8d7f2efe26d05da721ec43f
+  ReactiveCocoa: 0e8725dd3c609128144c15192f4dbdab827f54ae
+  Specta: 82746c6fd70b104c5d37cfbadb7bf15a2cbc4da0
   SVProgressHUD: 03d4845ec8e64591726428a08236c6a5489d45f8
 
-COCOAPODS: 0.26.2
+COCOAPODS: 0.27.1
