@@ -27,8 +27,8 @@
 
 @implementation FRPPhotoDetailViewModel
 
--(instancetype)initWithPhotoModel:(FRPPhotoModel *)photoModel {
-    self = [self init];
+-(instancetype)initWithModel:(FRPPhotoModel *)photoModel {
+    self = [super initWithModel:photoModel];
     if (!self) return nil;
     
     RAC(self, photoName) = RACObserve(self.model, photoName);
