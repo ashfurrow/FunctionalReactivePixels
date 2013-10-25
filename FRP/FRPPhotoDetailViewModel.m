@@ -40,7 +40,7 @@
         return [NSString stringWithFormat:@"%0.2f", [value floatValue]];
     }];
     RAC(self, photographerName) = RACObserve(self.photoModel, photographerName);
-    RAC(self, voteButtonText) = [RACObserve(self.photoModel, votedFor) map:^id(id value) {
+    RAC(self, votePromptText) = [RACObserve(self.photoModel, votedFor) map:^id(id value) {
         if ([value boolValue]) {
             return @"Voted For!";
         } else {
