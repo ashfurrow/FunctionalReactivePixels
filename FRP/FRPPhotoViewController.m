@@ -55,7 +55,7 @@
     @weakify(self);
     [[self rac_signalForSelector:@selector(viewDidAppear:)] subscribeNext:^(id x) {
         @strongify(self);
-        if (self.presentedViewController != nil) {
+        if (self.presentedViewController == nil) {
             [SVProgressHUD show];
             
             [self.viewModel.loadPhotosFromNetworkCommand execute:nil];

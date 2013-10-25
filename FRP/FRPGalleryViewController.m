@@ -71,7 +71,7 @@ static NSString *CellIdentifier = @"Cell";
         @strongify(self);
         
         NSIndexPath *indexPath = arguments.second;
-        FRPFullSizePhotoViewModel *viewModel = [[FRPFullSizePhotoViewModel alloc] initWithPhotoModelArray:self.viewModel.model initialPhotoIndex:indexPath.item];
+        FRPFullSizePhotoViewModel *viewModel = [[FRPFullSizePhotoViewModel alloc] initWithModel:RACTuplePack(self.viewModel.model, @(indexPath.item))];
         
         FRPFullSizePhotoViewController *viewController = [[FRPFullSizePhotoViewController alloc] init];
         viewController.viewModel = viewModel;

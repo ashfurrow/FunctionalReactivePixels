@@ -14,26 +14,20 @@
 
 @interface FRPFullSizePhotoViewModel ()
 
-// Private access
-@property (nonatomic, strong) NSArray *photoArray;
-@property (nonatomic, assign) NSInteger initialPhotoIndex;
-
 @end
 
 @implementation FRPFullSizePhotoViewModel
 
--(instancetype)initWithPhotoModelArray:(NSArray *)photoModelArray initialPhotoIndex:(NSInteger)initialPhotoIndex {
-    self = [self init];
-    if (!self) return nil;
-    
-    self.photoArray = photoModelArray;
-    self.initialPhotoIndex = initialPhotoIndex;
-    
-    return self;
-}
-
 -(NSString *)initialPhotoName {
     return [self.photoArray[self.initialPhotoIndex] photoName];
+}
+
+-(NSInteger)initialPhotoIndex {
+    return [self.model.second integerValue];
+}
+
+-(NSArray *)photoArray {
+    return self.model.first;
 }
 
 -(FRPPhotoModel *)photoModelAtIndex:(NSInteger)index {

@@ -13,8 +13,6 @@
 
 @interface FRPGalleryViewModel ()
 
-@property (nonatomic, strong) NSArray *photosArray;
-
 @end
 
 @implementation FRPGalleryViewModel
@@ -23,7 +21,7 @@
     self = [super init];
     if (!self) return nil;
     
-    RAC(self, photosArray) = [[[FRPPhotoImporter importPhotos] logError] catchTo:[RACSignal empty]];
+    RAC(self, model) = [[[FRPPhotoImporter importPhotos] logError] catchTo:[RACSignal empty]];
     
     return self;
 }
