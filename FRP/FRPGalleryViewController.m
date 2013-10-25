@@ -39,7 +39,7 @@ static NSString *CellIdentifier = @"Cell";
     self = [self initWithCollectionViewLayout:flowLayout];
     if (!self) return nil;
     
-    self.viewModel = [FRPGalleryViewModel new];
+    self.viewModel = [[FRPGalleryViewModel alloc] init];
     
     return self;
 }
@@ -57,7 +57,7 @@ static NSString *CellIdentifier = @"Cell";
     
     // Binding to view model
     @weakify(self);
-    [RACObserve(self.viewModel, photosArray) subscribeNext:^(id x) {
+    [RACObserve(self.viewModel, model) subscribeNext:^(id x) {
         @strongify(self);
         [self.collectionView reloadData];
     }];
@@ -71,7 +71,7 @@ static NSString *CellIdentifier = @"Cell";
         @strongify(self);
         
         NSIndexPath *indexPath = arguments.second;
-        FRPFullSizePhotoViewModel *viewModel = [[FRPFullSizePhotoViewModel alloc] initWithPhotoModelArray:self.viewModel.photosArray initialPhotoIndex:indexPath.item];
+        FRPFullSizePhotoViewModel *viewModel = [[FRPFullSizePhotoViewModel alloc] initWithPhotoModelArray:self.viewModel.model initialPhotoIndex:indexPath.item];
         
         FRPFullSizePhotoViewController *viewController = [[FRPFullSizePhotoViewController alloc] init];
         viewController.viewModel = viewModel;
@@ -100,13 +100,13 @@ static NSString *CellIdentifier = @"Cell";
 #pragma mark - UICollectionViewDataSource Methods
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.viewModel.photosArray.count;
+    return self.viewModel.model.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FRPCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    [cell setPhotoModel:self.viewModel.photosArray[indexPath.row]];
+    [cell setPhotoModel:self.viewModel.model[indexPath.row]];
     
     return cell;
 }
