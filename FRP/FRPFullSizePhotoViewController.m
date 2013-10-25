@@ -58,7 +58,7 @@
             FRPPhotoViewController *photoViewController = self.pageViewController.viewControllers.firstObject;
             FRPPhotoModel *photoModel = photoViewController.viewModel.model;
             
-            FRPPhotoDetailViewModel *viewModel = [[FRPPhotoDetailViewModel alloc] initWithPhotoModel:photoModel];
+            FRPPhotoDetailViewModel *viewModel = [[FRPPhotoDetailViewModel alloc] initWithModel:photoModel];
             
             FRPPhotoDetailViewController *viewController = [[FRPPhotoDetailViewController alloc] initWithViewModel:viewModel];
             UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];

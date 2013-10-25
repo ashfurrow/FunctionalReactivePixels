@@ -10,11 +10,9 @@
 
 @class FRPPhotoModel;
 
-@interface FRPPhotoDetailViewModel : NSObject
+@interface FRPPhotoDetailViewModel : RVMViewModel
 
--(instancetype)initWithPhotoModel:(FRPPhotoModel *)photoModel;
-
-@property (nonatomic, readonly) FRPPhotoModel *photoModel;
+@property (nonatomic, readonly) FRPPhotoModel *model;
 
 @property (nonatomic, readonly) NSString *photoName;
 @property (nonatomic, readonly) NSString *photoRating;

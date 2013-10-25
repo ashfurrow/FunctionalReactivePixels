@@ -20,8 +20,8 @@
 
 @implementation FRPPhotoViewModel
 
--(instancetype)initWithPhotoModel:(FRPPhotoModel *)photoModel {
-    self = [self initWithModel:photoModel];
+-(instancetype)initWithModel:(FRPPhotoModel *)photoModel {
+    self = [super initWithModel:photoModel];
     if (!self) return nil;
     
     @weakify(self);
