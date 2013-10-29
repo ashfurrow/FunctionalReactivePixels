@@ -10,10 +10,11 @@
 
 @class FRPPhotoModel;
 
-@interface FRPFullSizePhotoViewModel : NSObject
+@interface FRPFullSizePhotoViewModel : RVMViewModel
 
--(instancetype)initWithPhotoModelArray:(NSArray *)photoModelArray initialPhotoIndex:(NSInteger)initialPhotoIndex;
+-(instancetype)initWithPhotoArray:(NSArray *)photoArray initialPhotoIndex:(NSInteger)initialPhotoIndex;
 
+@property (nonatomic, readonly, strong) NSArray *model;
 @property (nonatomic, readonly) NSInteger initialPhotoIndex;
 
 @property (nonatomic, readonly) NSString *initialPhotoName;

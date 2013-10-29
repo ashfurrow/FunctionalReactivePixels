@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FRPGalleryViewModel : NSObject
+@interface FRPGalleryViewModel : RVMViewModel
 
-@property (nonatomic, readonly) NSArray *photosArray;
+@property (nonatomic, readonly, strong) NSArray *model;
 
 @end

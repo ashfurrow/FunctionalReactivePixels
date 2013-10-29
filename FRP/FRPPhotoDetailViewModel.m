@@ -16,8 +16,6 @@
 
 @interface FRPPhotoDetailViewModel ()
 
-@property (nonatomic, strong) FRPPhotoModel *photoModel;
-
 @property (nonatomic, strong) NSString *photoName;
 @property (nonatomic, strong) NSString *photoRating;
 @property (nonatomic, strong) NSString *photographerName;
@@ -29,18 +27,16 @@
 
 @implementation FRPPhotoDetailViewModel
 
--(instancetype)initWithPhotoModel:(FRPPhotoModel *)photoModel {
-    self = [self init];
+-(instancetype)initWithModel:(FRPPhotoModel *)photoModel {
+    self = [super initWithModel:photoModel];
     if (!self) return nil;
     
-    self.photoModel = photoModel;
-    
-    RAC(self, photoName) = RACObserve(self.photoModel, photoName);
-    RAC(self, photoRating) = [RACObserve(self.photoModel, rating) map:^id(id value) {
+    RAC(self, photoName) = RACObserve(self.model, photoName);
+    RAC(self, photoRating) = [RACObserve(self.model, rating) map:^id(id value) {
         return [NSString stringWithFormat:@"%0.2f", [value floatValue]];
     }];
-    RAC(self, photographerName) = RACObserve(self.photoModel, photographerName);
-    RAC(self, votePromptText) = [RACObserve(self.photoModel, votedFor) map:^id(id value) {
+    RAC(self, photographerName) = RACObserve(self.model, photographerName);
+    RAC(self, votePromptText) = [RACObserve(self.model, votedFor) map:^id(id value) {
         if ([value boolValue]) {
             return @"Voted For!";
         } else {
@@ -49,9 +45,9 @@
     }];
     
     @weakify(self);
-    self.voteCommand = [[RACCommand alloc] initWithEnabled:[RACObserve(self.photoModel, votedFor) not] signalBlock:^RACSignal *(id input) {
+    self.voteCommand = [[RACCommand alloc] initWithEnabled:[RACObserve(self.model, votedFor) not] signalBlock:^RACSignal *(id input) {
         @strongify(self);
-        return [FRPPhotoImporter voteForPhoto:self.photoModel];
+        return [FRPPhotoImporter voteForPhoto:self.model];
     }];
     
     return self;

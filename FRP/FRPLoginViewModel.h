@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FRPLoginViewModel : NSObject
+@interface FRPLoginViewModel : RVMViewModel
 
 @property (nonatomic, readonly) RACCommand *loginCommand;
 @property (nonatomic, strong) NSString *username;
