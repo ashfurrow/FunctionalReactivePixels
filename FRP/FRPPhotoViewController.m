@@ -51,10 +51,6 @@
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:imageView];
     self.imageView = imageView;
-    
-    [self.viewModel.didBecomeActiveSignal subscribeNext:^(id x) {
-        [SVProgressHUD dismiss];
-    }];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
