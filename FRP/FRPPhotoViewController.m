@@ -38,8 +38,7 @@
     return self;
 }
 
--(void)viewDidLoad
-{
+-(void)viewDidLoad {
     [super viewDidLoad];
     
     // Configure self's view
