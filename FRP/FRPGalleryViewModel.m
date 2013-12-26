@@ -1,4 +1,4 @@
-//
+    //
 //  FRPGalleryViewModel.m
 //  FRP
 //
@@ -21,9 +21,13 @@
     self = [super init];
     if (!self) return nil;
     
-    RAC(self, model) = [[[FRPPhotoImporter importPhotos] logError] catchTo:[RACSignal empty]];
+    RAC(self, model) = [self importPhotosSignal];
     
     return self;
+}
+
+-(RACSignal *)importPhotosSignal {
+    return [[[FRPPhotoImporter importPhotos] logError] catchTo:[RACSignal empty]];
 }
 
 @end

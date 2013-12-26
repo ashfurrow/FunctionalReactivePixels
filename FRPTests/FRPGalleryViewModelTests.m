@@ -12,20 +12,22 @@
 #import "FRPGalleryViewModel.h"
 #import "FRPPhotoImporter.h"
 
+@interface FRPGalleryViewModel ()
+
+-(RACSignal *)importPhotosSignal;
+
+@end
+
 SpecBegin(FRPGalleryViewModel)
 
 describe(@"FRPGalleryViewModel", ^{
-    beforeAll(^{
-        // This is run once and only once before all of the examples
-        // in this group and before any beforeEach blocks.
-    });
-    
-    beforeEach(^{
-        // This is run before each example.
-    });
-    
     it(@"should be initialized and call importPhotos", ^{
-        STAssertTrue(false, @"Test not implemented.");
+        id mockObject = [OCMockObject mockForClass:[FRPGalleryViewModel class]];
+        [[[mockObject expect] andReturn:[RACSignal empty]] importPhotosSignal];
+        
+        mockObject = [mockObject init];
+        
+        [mockObject verify];
     });
 });
 

@@ -94,8 +94,8 @@ PODS:
     - ReactiveCocoa/no-arc
   - ReactiveCocoa/no-arc (2.1.4)
   - ReactiveViewModel (0.1.1):
-    - ReactiveCocoa (= 2.1.4)
-  - Specta (0.1.11)
+    - ReactiveCocoa (~> 2.1)
+  - Specta (0.2.1)
   - SVProgressHUD (0.9)
 
 DEPENDENCIES:
@@ -105,7 +105,7 @@ DEPENDENCIES:
   - OCMock (~> 2.0.1)
   - ReactiveCocoa (= 2.1.4)
   - ReactiveViewModel (= 0.1.1)
-  - Specta (~> 0.1.11)
+  - Specta (~> 0.2.1)
   - SVProgressHUD (= 0.9)
 
 SPEC CHECKSUMS:
@@ -115,8 +115,8 @@ SPEC CHECKSUMS:
   libffi: 64ef39353e747bb2b25e1026afd96a157bf9231c
   OCMock: f0c099603f851d07f8d7f2efe26d05da721ec43f
   ReactiveCocoa: 0e8725dd3c609128144c15192f4dbdab827f54ae
-  ReactiveViewModel: 43714642e73dc029f4a23ca28cad6f4c57eb8487
-  Specta: 82746c6fd70b104c5d37cfbadb7bf15a2cbc4da0
+  ReactiveViewModel: e6cba4e138cfdaac19ea326bf42f6d6a61245f2c
+  Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
   SVProgressHUD: 03d4845ec8e64591726428a08236c6a5489d45f8
 
-COCOAPODS: 0.26.2
+COCOAPODS: 0.28.0
