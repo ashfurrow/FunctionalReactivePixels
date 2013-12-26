@@ -14,7 +14,7 @@
 
 @property (nonatomic, readonly) FRPPhotoModel *model;
 
-@property (nonatomic, readonly) RACSignal *photoImageSignal;
+@property (nonatomic, readonly) UIImage *photoImage;
 
 -(NSString *)photoName;
 

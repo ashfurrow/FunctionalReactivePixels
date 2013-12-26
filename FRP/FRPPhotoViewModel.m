@@ -14,7 +14,7 @@
 
 @interface FRPPhotoViewModel ()
 
-@property (nonatomic, strong) RACSignal *photoImageSignal;
+@property (nonatomic, strong) UIImage *photoImage;
 
 @end
 
@@ -34,7 +34,7 @@
         }];
     }];
     
-    self.photoImageSignal = [RACObserve(self.model, fullsizedData) map:^id(id value) {
+    RAC(self, photoImage) = [RACObserve(self.model, fullsizedData) map:^id(id value) {
         return [UIImage imageWithData:value];
     }];
 

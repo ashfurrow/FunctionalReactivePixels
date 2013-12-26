@@ -47,13 +47,15 @@
     
     // Configure subviews
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    RAC(imageView, image) = self.viewModel.photoImageSignal;
+    RAC(imageView, image) = RACObserve(self.viewModel, photoImage);
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:imageView];
     self.imageView = imageView;
 
-    [SVProgressHUD show];
-    [[self.viewModel.didBecomeActiveSignal take:1] subscribeNext:^(id x) {
+    [[self.viewModel.didBecomeActiveSignal take:1] subscribeCompleted:^{
+        [SVProgressHUD show];
+    }];
+    [RACObserve(self.viewModel, photoImage) subscribeNext:^(id _){
         [SVProgressHUD dismiss];
     }];
 }
