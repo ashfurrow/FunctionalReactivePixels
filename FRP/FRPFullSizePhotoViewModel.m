@@ -30,8 +30,13 @@
 }
 
 -(NSString *)initialPhotoName {
-    return [self.model[self.initialPhotoIndex] photoName];
+    FRPPhotoModel *photoModel = [self initialPhotoModel];
+    return [photoModel photoName];
 }
+
+//-(NSString *)initialPhotoName {
+//    return [self.model[self.initialPhotoIndex] photoName];
+//}
 
 -(FRPPhotoModel *)photoModelAtIndex:(NSInteger)index {
     if (index < 0 || index > self.model.count - 1) {
@@ -40,6 +45,12 @@
     } else {
         return self.model[index];
     }
+}
+
+#pragma mark - Private Methods
+
+-(FRPPhotoModel *)initialPhotoModel {
+    return [self photoModelAtIndex:self.initialPhotoIndex];
 }
 
 @end

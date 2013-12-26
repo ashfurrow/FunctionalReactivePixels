@@ -16,6 +16,7 @@
 		5E730B0E1815F3E4003FCB43 /* FRPGalleryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E730B0D1815F3E4003FCB43 /* FRPGalleryViewModel.m */; };
 		5E730B101815F78B003FCB43 /* FRPGalleryViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E730B0F1815F78B003FCB43 /* FRPGalleryViewModelTests.m */; };
 		5E730B141815FE97003FCB43 /* FRPFullSizePhotoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E730B131815FE97003FCB43 /* FRPFullSizePhotoViewModel.m */; };
+		5E93AD9A186C781000795C9E /* FRPFullSizePhotoViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E93AD99186C781000795C9E /* FRPFullSizePhotoViewModelTests.m */; };
 		5EAD1F5818173A3200C67860 /* FRPPhotoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EAD1F5718173A3200C67860 /* FRPPhotoViewModel.m */; };
 		5EAD1F5C18173F1500C67860 /* FRPLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EAD1F5B18173F1500C67860 /* FRPLoginViewModel.m */; };
 		5EAD1F601817418800C67860 /* FRPPhotoDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EAD1F5F1817418800C67860 /* FRPPhotoDetailViewModel.m */; };
@@ -63,6 +64,7 @@
 		5E730B0F1815F78B003FCB43 /* FRPGalleryViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPGalleryViewModelTests.m; sourceTree = "<group>"; };
 		5E730B121815FE97003FCB43 /* FRPFullSizePhotoViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPFullSizePhotoViewModel.h; sourceTree = "<group>"; };
 		5E730B131815FE97003FCB43 /* FRPFullSizePhotoViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPFullSizePhotoViewModel.m; sourceTree = "<group>"; };
+		5E93AD99186C781000795C9E /* FRPFullSizePhotoViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPFullSizePhotoViewModelTests.m; sourceTree = "<group>"; };
 		5EAD1F5618173A3200C67860 /* FRPPhotoViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPPhotoViewModel.h; sourceTree = "<group>"; };
 		5EAD1F5718173A3200C67860 /* FRPPhotoViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPPhotoViewModel.m; sourceTree = "<group>"; };
 		5EAD1F5A18173F1500C67860 /* FRPLoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPLoginViewModel.h; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				5E730B0F1815F78B003FCB43 /* FRPGalleryViewModelTests.m */,
+				5E93AD99186C781000795C9E /* FRPFullSizePhotoViewModelTests.m */,
 				5EBE2B1A180B07D0007B6BF3 /* Supporting Files */,
 			);
 			path = FRPTests;
@@ -482,6 +485,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E93AD9A186C781000795C9E /* FRPFullSizePhotoViewModelTests.m in Sources */,
 				5E730B101815F78B003FCB43 /* FRPGalleryViewModelTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
