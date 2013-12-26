@@ -10,7 +10,6 @@
 #import <OCMock/OCMock.h>
 
 #import "FRPGalleryViewModel.h"
-#import "FRPPhotoImporter.h"
 
 @interface FRPGalleryViewModel ()
 
