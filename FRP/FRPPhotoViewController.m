@@ -51,10 +51,15 @@
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:imageView];
     self.imageView = imageView;
+
+    [SVProgressHUD show];
+    [[self.viewModel.didBecomeActiveSignal take:1] subscribeNext:^(id x) {
+        [SVProgressHUD dismiss];
+    }];
 }
 
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     self.viewModel.active = YES;
 }
