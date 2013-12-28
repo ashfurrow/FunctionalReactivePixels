@@ -38,8 +38,7 @@
     return self;
 }
 
--(void)viewDidLoad
-{
+-(void)viewDidLoad {
     [super viewDidLoad];
     
     // Configure self's view
@@ -47,18 +46,22 @@
     
     // Configure subviews
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    RAC(imageView, image) = self.viewModel.photoImageSignal;
+    RAC(imageView, image) = RACObserve(self.viewModel, photoImage);
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:imageView];
     self.imageView = imageView;
-    
-    [self.viewModel.didBecomeActiveSignal subscribeNext:^(id x) {
-        [SVProgressHUD dismiss];
+
+    [RACObserve(self.viewModel, loading) subscribeNext:^(NSNumber *loading){
+        if (loading.boolValue) {
+            [SVProgressHUD show];
+        } else {
+            [SVProgressHUD dismiss];
+        }
     }];
 }
 
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     self.viewModel.active = YES;
 }

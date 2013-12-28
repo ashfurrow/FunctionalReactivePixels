@@ -107,9 +107,9 @@
     }
 }
 
-+(NSString *)urlForImageSize:(NSInteger)size inDictionary:(NSDictionary *)dictionary {
++(NSString *)urlForImageSize:(NSInteger)size inDictionary:(NSArray *)array {
     /*
-     images =     (
+    (
         {
             size = 3;
             url = "http://ppcdn.500px.org/49204370/b125a49d0863e0ba05d8196072b055876159f33e/3.jpg";
@@ -117,7 +117,7 @@
      );
      */
     
-    return [[[[[dictionary rac_sequence] filter:^BOOL(NSDictionary *value) {
+    return [[[[[array rac_sequence] filter:^BOOL(NSDictionary *value) {
         return [value[@"size"] integerValue] == size;
     }] map:^id(id value) {
         return value[@"url"];
