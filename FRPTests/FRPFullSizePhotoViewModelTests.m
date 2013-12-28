@@ -40,10 +40,10 @@ describe(@"FRPFullSizePhotomodel", ^{
         FRPFullSizePhotoViewModel *viewModel = [[FRPFullSizePhotoViewModel alloc] initWithPhotoArray:model initialPhotoIndex:initialPhotoIndex];
         
         id subzeroModel = [viewModel photoModelAtIndex:-1];
-        expect(subzeroModel).to.beNil;
+        expect(subzeroModel).to.beNil();
         
         id aboveBoundsModel = [viewModel photoModelAtIndex:model.count];
-        expect(aboveBoundsModel).to.beNil;
+        expect(aboveBoundsModel).to.beNil();
     });
     
     it (@"should return the correct model for photoModelAtIndex:", ^{
