@@ -86,7 +86,7 @@ PODS:
   - libextobjc/RuntimeExtensions (0.3)
   - libextobjc/UmbrellaHeader (0.3)
   - libffi (3.0.13)
-  - OCMock (2.0.1)
+  - OCMock (2.2.2)
   - ReactiveCocoa (2.1.4):
     - ReactiveCocoa/Core
     - ReactiveCocoa/no-arc
@@ -102,7 +102,7 @@ DEPENDENCIES:
   - 500px-iOS-api (= 1.0.5)
   - Expecta (~> 0.2)
   - libextobjc (= 0.3)
-  - OCMock (~> 2.0.1)
+  - OCMock (~> 2.2.2)
   - ReactiveCocoa (= 2.1.4)
   - ReactiveViewModel (= 0.1.1)
   - Specta (~> 0.2.1)
@@ -113,7 +113,7 @@ SPEC CHECKSUMS:
   Expecta: dbc4a27fabb853bdd2e907e33f11ee43a9a47d0c
   libextobjc: 820a79dbbbc498611e04fffd07d2d52a5588e7ac
   libffi: 64ef39353e747bb2b25e1026afd96a157bf9231c
-  OCMock: f0c099603f851d07f8d7f2efe26d05da721ec43f
+  OCMock: ffba68873fd32cfd35d885bddad23bfa816da4a3
   ReactiveCocoa: 0e8725dd3c609128144c15192f4dbdab827f54ae
   ReactiveViewModel: e6cba4e138cfdaac19ea326bf42f6d6a61245f2c
   Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a

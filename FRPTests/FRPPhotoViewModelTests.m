@@ -49,9 +49,19 @@ describe(@"FRPPhotoViewModel", ^{
         [mockViewModel verify];
     });
     
-    pending (@"should correctly map image data to UIImage", ^{
-        id mockPhotoModel = [OCMockObject mockForClass:[FRPPhotoViewModel class]];
-        [[[mockPhotoModel expect] andReturn:nil] fullsizedData];
+    it (@"should correctly map image data to UIImage", ^{
+        UIImage *image = [[UIImage alloc] init];
+        NSData *imageData = [NSData data];
+        
+        id mockImage = [OCMockObject mockForClass:[UIImage class]];
+        [[[mockImage stub] andReturn:image] imageWithData:imageData];
+        
+        FRPPhotoModel *photoModel = [[FRPPhotoModel alloc] init];
+        photoModel.fullsizedData = imageData;
+        
+        FRPPhotoViewModel *viewModel = [[FRPPhotoViewModel alloc] initWithModel:photoModel];
+        
+        [mockImage verify];
     });
     
     it (@"should return the correct photo name", ^{

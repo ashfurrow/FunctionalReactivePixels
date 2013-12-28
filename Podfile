@@ -18,6 +18,6 @@ pod 'libextobjc', '0.3'
 pod '500px-iOS-api', '1.0.5'
 pod 'Specta', '~> 0.2.1'
 pod 'Expecta', '~> 0.2'
-pod 'OCMock', '~> 2.0.1'
+pod 'OCMock', '~> 2.2.2'
 
 end
