@@ -15,6 +15,7 @@
 @property (nonatomic, readonly) FRPPhotoModel *model;
 
 @property (nonatomic, readonly) UIImage *photoImage;
+@property (nonatomic, readonly, getter = isLoading) BOOL loading;
 
 -(NSString *)photoName;
 

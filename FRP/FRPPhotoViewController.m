@@ -51,11 +51,12 @@
     [self.view addSubview:imageView];
     self.imageView = imageView;
 
-    [[self.viewModel.didBecomeActiveSignal take:1] subscribeCompleted:^{
-        [SVProgressHUD show];
-    }];
-    [RACObserve(self.viewModel, photoImage) subscribeNext:^(id _){
-        [SVProgressHUD dismiss];
+    [RACObserve(self.viewModel, loading) subscribeNext:^(NSNumber *loading){
+        if (loading.boolValue) {
+            [SVProgressHUD show];
+        } else {
+            [SVProgressHUD dismiss];
+        }
     }];
 }
 
