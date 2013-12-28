@@ -36,6 +36,8 @@ describe(@"FRPPhotoViewModel", ^{
         id returnedName = [mockViewModel photoName];
         
         expect(returnedName).to.equal(name);
+        
+        [mockPhotoModel stopMocking];
     });
     
     it (@"should download photo model details when it becomes active", ^{
@@ -59,9 +61,10 @@ describe(@"FRPPhotoViewModel", ^{
         FRPPhotoModel *photoModel = [[FRPPhotoModel alloc] init];
         photoModel.fullsizedData = imageData;
         
-        FRPPhotoViewModel *viewModel = [[FRPPhotoViewModel alloc] initWithModel:photoModel];
+        __unused FRPPhotoViewModel *viewModel = [[FRPPhotoViewModel alloc] initWithModel:photoModel];
         
         [mockImage verify];
+        [mockImage stopMocking];
     });
     
     it (@"should return the correct photo name", ^{

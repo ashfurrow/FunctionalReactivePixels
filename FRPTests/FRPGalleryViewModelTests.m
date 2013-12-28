@@ -27,6 +27,7 @@ describe(@"FRPGalleryViewModel", ^{
         mockObject = [mockObject init];
         
         [mockObject verify];
+        [mockObject stopMocking];
     });
 });
 
