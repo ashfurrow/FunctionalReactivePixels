@@ -96,7 +96,7 @@ PODS:
   - ReactiveViewModel (0.1.1):
     - ReactiveCocoa (~> 2.1)
   - Specta (0.2.1)
-  - SVProgressHUD (0.9)
+  - SVProgressHUD (1.0)
 
 DEPENDENCIES:
   - 500px-iOS-api (= 1.0.5)
@@ -106,7 +106,7 @@ DEPENDENCIES:
   - ReactiveCocoa (= 2.1.4)
   - ReactiveViewModel (= 0.1.1)
   - Specta (~> 0.2.1)
-  - SVProgressHUD (= 0.9)
+  - SVProgressHUD (= 1.0)
 
 SPEC CHECKSUMS:
   500px-iOS-api: b67f7b641d79737eb26478d4e07cc1610314521c
@@ -117,6 +117,6 @@ SPEC CHECKSUMS:
   ReactiveCocoa: 0e8725dd3c609128144c15192f4dbdab827f54ae
   ReactiveViewModel: e6cba4e138cfdaac19ea326bf42f6d6a61245f2c
   Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
-  SVProgressHUD: 03d4845ec8e64591726428a08236c6a5489d45f8
+  SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
 
 COCOAPODS: 0.29.0

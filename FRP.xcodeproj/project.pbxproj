@@ -30,7 +30,6 @@
 		5EBE2B01180B07D0007B6BF3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5EBE2AFF180B07D0007B6BF3 /* InfoPlist.strings */; };
 		5EBE2B03180B07D0007B6BF3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBE2B02180B07D0007B6BF3 /* main.m */; };
 		5EBE2B07180B07D0007B6BF3 /* FRPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBE2B06180B07D0007B6BF3 /* FRPAppDelegate.m */; };
-		5EBE2B0C180B07D0007B6BF3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EBE2B0B180B07D0007B6BF3 /* Images.xcassets */; };
 		5EBE2B13180B07D0007B6BF3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EBE2B12180B07D0007B6BF3 /* XCTest.framework */; };
 		5EBE2B14180B07D0007B6BF3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EBE2AF4180B07D0007B6BF3 /* Foundation.framework */; };
 		5EBE2B15180B07D0007B6BF3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EBE2AF8180B07D0007B6BF3 /* UIKit.framework */; };
@@ -92,7 +91,6 @@
 		5EBE2B04180B07D0007B6BF3 /* FRP-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FRP-Prefix.pch"; sourceTree = "<group>"; };
 		5EBE2B05180B07D0007B6BF3 /* FRPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FRPAppDelegate.h; sourceTree = "<group>"; };
 		5EBE2B06180B07D0007B6BF3 /* FRPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FRPAppDelegate.m; sourceTree = "<group>"; };
-		5EBE2B0B180B07D0007B6BF3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5EBE2B11180B07D0007B6BF3 /* FRPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FRPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EBE2B12180B07D0007B6BF3 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		5EBE2B1B180B07D0007B6BF3 /* FRPTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FRPTests-Info.plist"; sourceTree = "<group>"; };
@@ -265,7 +263,6 @@
 				5E59510E180E0634002F44FA /* View Controllers */,
 				5EBC59A3180B268A00B683A7 /* Models */,
 				5EBC599F180B267400B683A7 /* UICollectionView Extensions */,
-				5EBE2B0B180B07D0007B6BF3 /* Images.xcassets */,
 				5EBE2AFD180B07D0007B6BF3 /* Supporting Files */,
 			);
 			path = FRP;
@@ -383,7 +380,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EBE2B01180B07D0007B6BF3 /* InfoPlist.strings in Resources */,
-				5EBE2B0C180B07D0007B6BF3 /* Images.xcassets in Resources */,
 				5E59511F18121D09002F44FA /* FRPLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -600,12 +596,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CF6C5FA73F5F4703A3C7C4C0 /* Pods-FRP.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FRP/FRP-Prefix.pch";
 				INFOPLIST_FILE = "FRP/FRP-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -614,12 +612,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CF6C5FA73F5F4703A3C7C4C0 /* Pods-FRP.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FRP/FRP-Prefix.pch";
 				INFOPLIST_FILE = "FRP/FRP-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -628,7 +628,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C5AC1B577BDC442AA756B515 /* Pods-FRPTests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FRP.app/FRP";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -644,6 +644,7 @@
 				INFOPLIST_FILE = "FRPTests/FRPTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -652,7 +653,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C5AC1B577BDC442AA756B515 /* Pods-FRPTests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FRP.app/FRP";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -664,6 +665,7 @@
 				INFOPLIST_FILE = "FRPTests/FRPTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
