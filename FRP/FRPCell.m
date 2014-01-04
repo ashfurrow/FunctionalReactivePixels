@@ -8,6 +8,7 @@
 
 #import "FRPCell.h"
 #import "FRPPhotoModel.m"
+#import "NSData+AFDecompression.h"
 
 @interface FRPCell ()
 
@@ -31,10 +32,17 @@
     [self.contentView addSubview:imageView];
     self.imageView = imageView;
 
-    RAC(self.imageView, image) = [[RACObserve(self, photoModel.thumbnailData) ignore:nil] map:^(NSData *data) {
-        return [UIImage imageWithData:data];
-    }];
-    
+    RAC(self.imageView, image) = [[[RACObserve(self, photoModel.thumbnailData) ignore:nil] map:^id(id value) {
+		return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+			[value af_decompressedImageFromJPEGDataWithCallback:
+				 ^(UIImage *decompressedImage) {
+					 [subscriber sendNext:decompressedImage];
+					 [subscriber sendCompleted];
+				 }];
+			return nil;
+		}] subscribeOn:[RACScheduler scheduler]];
+	}] switchToLatest];
+	
     return self;
 }
 
