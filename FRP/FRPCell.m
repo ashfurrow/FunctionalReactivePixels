@@ -32,22 +32,15 @@
     [self.contentView addSubview:imageView];
     self.imageView = imageView;
 
-    RACCommand *command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-		return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-			[[RACScheduler scheduler] schedule:^{
-				[input af_decompressedImageFromJPEGDataWithCallback:
+    RAC(self.imageView, image) = [[[RACObserve(self, photoModel.thumbnailData) ignore:nil] map:^id(id value) {
+		return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+			[value af_decompressedImageFromJPEGDataWithCallback:
 				 ^(UIImage *decompressedImage) {
-					[subscriber sendNext:decompressedImage];
-					[subscriber sendCompleted];
-				}];
-			}];
+					 [subscriber sendNext:decompressedImage];
+					 [subscriber sendCompleted];
+				 }];
 			return nil;
-		}];
-	}];
-	command.allowsConcurrentExecution = YES;
-
-	RAC(self.imageView, image) = [[[RACObserve(self, photoModel.thumbnailData) ignore:nil] map:^id(id value) {
-		return [command execute:value];
+		}] subscribeOn:[RACScheduler scheduler]];
 	}] switchToLatest];
 	
     return self;
