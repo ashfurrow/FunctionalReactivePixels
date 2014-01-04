@@ -1,6 +1,9 @@
 PODS:
   - 500px-iOS-api (1.0.5)
+  - AFImageDownloader (1.0.0):
+    - Kiwi (~> 1.1.1)
   - Expecta (0.2.3)
+  - Kiwi (1.1.1)
   - libextobjc (0.3):
     - libextobjc/EXTADT
     - libextobjc/EXTAnnotation
@@ -100,6 +103,7 @@ PODS:
 
 DEPENDENCIES:
   - 500px-iOS-api (= 1.0.5)
+  - AFImageDownloader (= 1.0.0)
   - Expecta (~> 0.2)
   - libextobjc (= 0.3)
   - OCMock (~> 2.2.2)
@@ -110,7 +114,9 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   500px-iOS-api: b67f7b641d79737eb26478d4e07cc1610314521c
+  AFImageDownloader: 4c385edcac3cea688c21b99d824ba6e73c190141
   Expecta: dbc4a27fabb853bdd2e907e33f11ee43a9a47d0c
+  Kiwi: ab0fa8d13b97dca05915e31df9b2d888d74ab717
   libextobjc: 820a79dbbbc498611e04fffd07d2d52a5588e7ac
   libffi: 64ef39353e747bb2b25e1026afd96a157bf9231c
   OCMock: ffba68873fd32cfd35d885bddad23bfa816da4a3

@@ -36,7 +36,6 @@
 		5EBE2B16180B07D0007B6BF3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EBE2AFA180B07D0007B6BF3 /* CoreData.framework */; };
 		5EBE2B1E180B07D0007B6BF3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5EBE2B1C180B07D0007B6BF3 /* InfoPlist.strings */; };
 		5EBE2B2B180B0AF1007B6BF3 /* FRPGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBE2B2A180B0AF1007B6BF3 /* FRPGalleryViewController.m */; };
-		734185B618776A1500508616 /* NSData+AFDecompression.m in Sources */ = {isa = PBXBuildFile; fileRef = 734185B518776A1500508616 /* NSData+AFDecompression.m */; };
 		F5C87C1873574C63889236C3 /* libPods-FRPTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F89E0211BE405E85BE5C5A /* libPods-FRPTests.a */; };
 /* End PBXBuildFile section */
 
@@ -98,8 +97,6 @@
 		5EBE2B1D180B07D0007B6BF3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5EBE2B29180B0AF1007B6BF3 /* FRPGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPGalleryViewController.h; sourceTree = "<group>"; };
 		5EBE2B2A180B0AF1007B6BF3 /* FRPGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPGalleryViewController.m; sourceTree = "<group>"; };
-		734185B418776A1500508616 /* NSData+AFDecompression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AFDecompression.h"; sourceTree = "<group>"; };
-		734185B518776A1500508616 /* NSData+AFDecompression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AFDecompression.m"; sourceTree = "<group>"; };
 		772BE9E4C5824F1C8E5CDC45 /* libPods-FRP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FRP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5AC1B577BDC442AA756B515 /* Pods-FRPTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FRPTests.xcconfig"; path = "Pods/Pods-FRPTests.xcconfig"; sourceTree = "<group>"; };
 		CF6C5FA73F5F4703A3C7C4C0 /* Pods-FRP.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FRP.xcconfig"; path = "Pods/Pods-FRP.xcconfig"; sourceTree = "<group>"; };
@@ -259,8 +256,6 @@
 		5EBE2AFC180B07D0007B6BF3 /* FRP */ = {
 			isa = PBXGroup;
 			children = (
-				734185B418776A1500508616 /* NSData+AFDecompression.h */,
-				734185B518776A1500508616 /* NSData+AFDecompression.m */,
 				5EBE2B05180B07D0007B6BF3 /* FRPAppDelegate.h */,
 				5EBE2B06180B07D0007B6BF3 /* FRPAppDelegate.m */,
 				5EBC59A4180B2AA200B683A7 /* FRPPhotoImporter.h */,
@@ -478,7 +473,6 @@
 				5E59511A180E21E0002F44FA /* FRPPhotoDetailViewController.m in Sources */,
 				5E595117180E0C33002F44FA /* FRPPhotoViewController.m in Sources */,
 				5EBC59A6180B2AA200B683A7 /* FRPPhotoImporter.m in Sources */,
-				734185B618776A1500508616 /* NSData+AFDecompression.m in Sources */,
 				5EBE2B2B180B0AF1007B6BF3 /* FRPGalleryViewController.m in Sources */,
 				5E730B141815FE97003FCB43 /* FRPFullSizePhotoViewModel.m in Sources */,
 				5EAD1F5818173A3200C67860 /* FRPPhotoViewModel.m in Sources */,
