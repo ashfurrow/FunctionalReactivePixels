@@ -1,4 +1,4 @@
-FunctionalReactivePixels
+![](http://static.ashfurrow.com/github/FRP.png)
 ========================
 
 A demonstration of how to use FRP with ReactiveCocoa in an iOS context using the 500px API. 
