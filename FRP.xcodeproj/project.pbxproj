@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17A5BBDB18BB2F6D000E2D24 /* FRPLoginViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17A5BBDA18BB2F6D000E2D24 /* FRPLoginViewModelTests.m */; };
 		2826EB375D254DDD8DE6EAA8 /* libPods-FRP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 772BE9E4C5824F1C8E5CDC45 /* libPods-FRP.a */; };
 		5E595111180E065F002F44FA /* FRPFullSizePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E595110180E065F002F44FA /* FRPFullSizePhotoViewController.m */; };
 		5E595117180E0C33002F44FA /* FRPPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E595116180E0C33002F44FA /* FRPPhotoViewController.m */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17A5BBDA18BB2F6D000E2D24 /* FRPLoginViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPLoginViewModelTests.m; sourceTree = "<group>"; };
 		5E59510F180E065F002F44FA /* FRPFullSizePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPFullSizePhotoViewController.h; sourceTree = "<group>"; };
 		5E595110180E065F002F44FA /* FRPFullSizePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPFullSizePhotoViewController.m; sourceTree = "<group>"; };
 		5E595115180E0C33002F44FA /* FRPPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPPhotoViewController.h; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 		5EBE2B19180B07D0007B6BF3 /* FRPTests */ = {
 			isa = PBXGroup;
 			children = (
+				17A5BBDA18BB2F6D000E2D24 /* FRPLoginViewModelTests.m */,
 				5E730B0F1815F78B003FCB43 /* FRPGalleryViewModelTests.m */,
 				5E93AD99186C781000795C9E /* FRPFullSizePhotoViewModelTests.m */,
 				5E93AD9B186C80DE00795C9E /* FRPPhotoViewModelTests.m */,
@@ -487,6 +490,7 @@
 				5E93AD9A186C781000795C9E /* FRPFullSizePhotoViewModelTests.m in Sources */,
 				5E730B101815F78B003FCB43 /* FRPGalleryViewModelTests.m in Sources */,
 				5E93AD9C186C80DE00795C9E /* FRPPhotoViewModelTests.m in Sources */,
+				17A5BBDB18BB2F6D000E2D24 /* FRPLoginViewModelTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
