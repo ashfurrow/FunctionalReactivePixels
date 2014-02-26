@@ -13,9 +13,15 @@
 
 #import "FRPPhotoImporter.h"
 
+@interface FRPPhotoImporter()
+
++(RACSignal *)requestPhotoData;
+
+@end
+
 SpecBegin(FRPPhotoImporter)
 
-describe(@"FRPPhotoImporter", ^{
+describe(@"FRPPhotoImporter_Login", ^{
     __block id mock;
     beforeEach(^{
         mock = [OCMockObject mockForClass:[PXRequest class]];
@@ -53,6 +59,23 @@ describe(@"FRPPhotoImporter", ^{
 
     afterEach(^{
         mock = nil;
+    });
+});
+
+describe(@"FRPPhotoImporter_ImportPhotos", ^{
+    it(@"requests popular photo data", ^{
+        id mock = [OCMockObject mockForClass:[NSURLConnection class]];
+        __block id resultData;
+        RACSignal *stubAsyn = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            [subscriber sendNext:RACTuplePack(nil, [NSData data])];
+            return nil;
+        }];
+        [[[mock stub] andReturn:stubAsyn] rac_sendAsynchronousRequest:[OCMArg any]];
+
+        [[FRPPhotoImporter requestPhotoData] subscribeNext:^(id x) {
+            resultData = x;
+        }];
+        expect(resultData).to.equal([NSData data]);
     });
 });
 

@@ -19,12 +19,17 @@
     return [[PXRequest apiHelper] urlRequestForPhotoID:photoModel.identifier.integerValue];
 }
 
-+(RACSignal *)importPhotos {
++(RACSignal *)requestPhotoData
+{
     NSURLRequest *request = [self popularURLRequest];
     
-    return [[[[[[NSURLConnection rac_sendAsynchronousRequest:request] reduceEach:^id(NSURLResponse *response, NSData *data){
+    return [[NSURLConnection rac_sendAsynchronousRequest:request] reduceEach:^id(NSURLResponse *response, NSData *data){
         return data;
-    }] deliverOn:[RACScheduler mainThreadScheduler]] map:^id(NSData *data) {
+    }];
+}
+
++(RACSignal *)importPhotos {
+    return [[[[[self requestPhotoData] deliverOn:[RACScheduler mainThreadScheduler]] map:^id(NSData *data) {
         id results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         
         return [[[results[@"photos"] rac_sequence] map:^id(NSDictionary *photoDictionary) {
