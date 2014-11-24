@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		17E5A10E18BB43C600AFC028 /* FRPPhotoImporterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E5A10D18BB43C600AFC028 /* FRPPhotoImporterTests.m */; };
 		17A5BBDB18BB2F6D000E2D24 /* FRPLoginViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17A5BBDA18BB2F6D000E2D24 /* FRPLoginViewModelTests.m */; };
+		17E5A10E18BB43C600AFC028 /* FRPPhotoImporterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E5A10D18BB43C600AFC028 /* FRPPhotoImporterTests.m */; };
 		2826EB375D254DDD8DE6EAA8 /* libPods-FRP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 772BE9E4C5824F1C8E5CDC45 /* libPods-FRP.a */; };
 		5E595111180E065F002F44FA /* FRPFullSizePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E595110180E065F002F44FA /* FRPFullSizePhotoViewController.m */; };
 		5E595117180E0C33002F44FA /* FRPPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E595116180E0C33002F44FA /* FRPPhotoViewController.m */; };
@@ -52,8 +52,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		17E5A10D18BB43C600AFC028 /* FRPPhotoImporterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPPhotoImporterTests.m; sourceTree = "<group>"; };
 		17A5BBDA18BB2F6D000E2D24 /* FRPLoginViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPLoginViewModelTests.m; sourceTree = "<group>"; };
+		17E5A10D18BB43C600AFC028 /* FRPPhotoImporterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPPhotoImporterTests.m; sourceTree = "<group>"; };
+		3AFF6E7183712769B899335A /* Pods-FRPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FRPTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FRPTests/Pods-FRPTests.debug.xcconfig"; sourceTree = "<group>"; };
+		45B7C6E403355A80BA37853D /* Pods-FRP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FRP.release.xcconfig"; path = "Pods/Target Support Files/Pods-FRP/Pods-FRP.release.xcconfig"; sourceTree = "<group>"; };
 		5E59510F180E065F002F44FA /* FRPFullSizePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPFullSizePhotoViewController.h; sourceTree = "<group>"; };
 		5E595110180E065F002F44FA /* FRPFullSizePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPFullSizePhotoViewController.m; sourceTree = "<group>"; };
 		5E595115180E0C33002F44FA /* FRPPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPPhotoViewController.h; sourceTree = "<group>"; };
@@ -101,9 +103,9 @@
 		5EBE2B1D180B07D0007B6BF3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5EBE2B29180B0AF1007B6BF3 /* FRPGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPGalleryViewController.h; sourceTree = "<group>"; };
 		5EBE2B2A180B0AF1007B6BF3 /* FRPGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPGalleryViewController.m; sourceTree = "<group>"; };
+		7127D6F69C47C55C8935454C /* Pods-FRP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FRP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FRP/Pods-FRP.debug.xcconfig"; sourceTree = "<group>"; };
 		772BE9E4C5824F1C8E5CDC45 /* libPods-FRP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FRP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C5AC1B577BDC442AA756B515 /* Pods-FRPTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FRPTests.xcconfig"; path = "Pods/Pods-FRPTests.xcconfig"; sourceTree = "<group>"; };
-		CF6C5FA73F5F4703A3C7C4C0 /* Pods-FRP.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FRP.xcconfig"; path = "Pods/Pods-FRP.xcconfig"; sourceTree = "<group>"; };
+		CF7333D7B465DC81C75987DC /* Pods-FRPTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FRPTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FRPTests/Pods-FRPTests.release.xcconfig"; sourceTree = "<group>"; };
 		E5F89E0211BE405E85BE5C5A /* libPods-FRPTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FRPTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -134,6 +136,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3BED0B61C697FB1682F9D1C0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7127D6F69C47C55C8935454C /* Pods-FRP.debug.xcconfig */,
+				45B7C6E403355A80BA37853D /* Pods-FRP.release.xcconfig */,
+				3AFF6E7183712769B899335A /* Pods-FRPTests.debug.xcconfig */,
+				CF7333D7B465DC81C75987DC /* Pods-FRPTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		5E59510E180E0634002F44FA /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,8 +242,7 @@
 				5EBE2B19180B07D0007B6BF3 /* FRPTests */,
 				5EBE2AF3180B07D0007B6BF3 /* Frameworks */,
 				5EBE2AF2180B07D0007B6BF3 /* Products */,
-				CF6C5FA73F5F4703A3C7C4C0 /* Pods-FRP.xcconfig */,
-				C5AC1B577BDC442AA756B515 /* Pods-FRPTests.xcconfig */,
+				3BED0B61C697FB1682F9D1C0 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -443,7 +455,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-FRPTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FRPTests/Pods-FRPTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E46E00988B20439593D30FC8 /* Copy Pods Resources */ = {
@@ -458,7 +470,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-FRP-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FRP/Pods-FRP-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -602,7 +614,7 @@
 		};
 		5EBE2B24180B07D0007B6BF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF6C5FA73F5F4703A3C7C4C0 /* Pods-FRP.xcconfig */;
+			baseConfigurationReference = 7127D6F69C47C55C8935454C /* Pods-FRP.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -611,14 +623,14 @@
 				GCC_PREFIX_HEADER = "FRP/FRP-Prefix.pch";
 				INFOPLIST_FILE = "FRP/FRP-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		5EBE2B25180B07D0007B6BF3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF6C5FA73F5F4703A3C7C4C0 /* Pods-FRP.xcconfig */;
+			baseConfigurationReference = 45B7C6E403355A80BA37853D /* Pods-FRP.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -627,14 +639,14 @@
 				GCC_PREFIX_HEADER = "FRP/FRP-Prefix.pch";
 				INFOPLIST_FILE = "FRP/FRP-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
 		5EBE2B27180B07D0007B6BF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C5AC1B577BDC442AA756B515 /* Pods-FRPTests.xcconfig */;
+			baseConfigurationReference = 3AFF6E7183712769B899335A /* Pods-FRPTests.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FRP.app/FRP";
@@ -659,7 +671,7 @@
 		};
 		5EBE2B28180B07D0007B6BF3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C5AC1B577BDC442AA756B515 /* Pods-FRPTests.xcconfig */;
+			baseConfigurationReference = CF7333D7B465DC81C75987DC /* Pods-FRPTests.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FRP.app/FRP";
