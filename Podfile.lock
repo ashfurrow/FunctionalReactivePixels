@@ -4,41 +4,6 @@ PODS:
     - Kiwi (~> 1.1.1)
   - Expecta (0.2.3)
   - Kiwi (1.1.1)
-  - libextobjc (0.4):
-    - libextobjc/EXTADT (= 0.4)
-    - libextobjc/EXTConcreteProtocol (= 0.4)
-    - libextobjc/EXTKeyPathCoding (= 0.4)
-    - libextobjc/EXTNil (= 0.4)
-    - libextobjc/EXTSafeCategory (= 0.4)
-    - libextobjc/EXTScope (= 0.4)
-    - libextobjc/EXTSelectorChecking (= 0.4)
-    - libextobjc/EXTSynthesize (= 0.4)
-    - libextobjc/NSInvocation+EXT (= 0.4)
-    - libextobjc/NSMethodSignature+EXT (= 0.4)
-    - libextobjc/RuntimeExtensions (= 0.4)
-    - libextobjc/UmbrellaHeader (= 0.4)
-  - libextobjc/EXTADT (0.4):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTConcreteProtocol (0.4):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTKeyPathCoding (0.4):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTNil (0.4):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTSafeCategory (0.4):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTScope (0.4):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTSelectorChecking (0.4):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTSynthesize (0.4):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/NSInvocation+EXT (0.4):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/NSMethodSignature+EXT (0.4):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/RuntimeExtensions (0.4)
-  - libextobjc/UmbrellaHeader (0.4)
   - OCMock (2.2.2)
   - ReactiveCocoa (2.1.4):
     - ReactiveCocoa/Core (= 2.1.4)
@@ -55,7 +20,6 @@ DEPENDENCIES:
   - 500px-iOS-api (= 1.0.5)
   - AFImageDownloader (= 1.0.0)
   - Expecta (~> 0.2)
-  - libextobjc (= 0.4)
   - OCMock (~> 2.2.2)
   - ReactiveCocoa (= 2.1.4)
   - ReactiveViewModel (= 0.1.1)
@@ -67,7 +31,6 @@ SPEC CHECKSUMS:
   AFImageDownloader: 2af9e2e7820cc43eb68712012778d89fdde3a24b
   Expecta: 578e0c29df79a96a159187599e2def686ef6a66c
   Kiwi: e5158ea79f32bae42ec0750ac6f7ec122bc1eebc
-  libextobjc: ba42e4111f433273a886cd54f0ddaddb7f62f82f
   OCMock: ee92ff671156212865397cd6fbae60a2d3698fb8
   ReactiveCocoa: dd0c6a84d368d0980e5c4253d1a7f0a0178e0751
   ReactiveViewModel: 5a678d4f2cb7b6f7f60b10f58c37e30f9db684a2
