@@ -1,15 +1,17 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-platform :ios, "7.0"
+platform :ios, "8.0"
+
+inhibit_all_warnings!
 
 target "FRP" do
 
-pod 'ReactiveCocoa', '2.1.4'
-pod 'ReactiveViewModel', '0.1.1'
-pod '500px-iOS-api', '1.0.5'
+pod 'ReactiveCocoa'
+pod 'ReactiveViewModel', tag: '0.1.2', git: 'https://github.com/ashfurrow/ReactiveViewModel.git'
+pod '500px-iOS-api'
 pod 'SVProgressHUD', '1.0'
 pod 'AFImageDownloader', '1.0.0'
-pod 'libextobjc', '0.4'
+pod 'libextobjc'
 
 end
 

@@ -4,74 +4,86 @@ PODS:
     - Kiwi (~> 1.1.1)
   - Expecta (0.4.2)
   - Kiwi (1.1.1)
-  - libextobjc (0.4):
-    - libextobjc/EXTADT (= 0.4)
-    - libextobjc/EXTConcreteProtocol (= 0.4)
-    - libextobjc/EXTKeyPathCoding (= 0.4)
-    - libextobjc/EXTNil (= 0.4)
-    - libextobjc/EXTSafeCategory (= 0.4)
-    - libextobjc/EXTScope (= 0.4)
-    - libextobjc/EXTSelectorChecking (= 0.4)
-    - libextobjc/EXTSynthesize (= 0.4)
-    - libextobjc/NSInvocation+EXT (= 0.4)
-    - libextobjc/NSMethodSignature+EXT (= 0.4)
-    - libextobjc/RuntimeExtensions (= 0.4)
-    - libextobjc/UmbrellaHeader (= 0.4)
-  - libextobjc/EXTADT (0.4):
+  - libextobjc (0.4.1):
+    - libextobjc/EXTADT (= 0.4.1)
+    - libextobjc/EXTConcreteProtocol (= 0.4.1)
+    - libextobjc/EXTKeyPathCoding (= 0.4.1)
+    - libextobjc/EXTNil (= 0.4.1)
+    - libextobjc/EXTSafeCategory (= 0.4.1)
+    - libextobjc/EXTScope (= 0.4.1)
+    - libextobjc/EXTSelectorChecking (= 0.4.1)
+    - libextobjc/EXTSynthesize (= 0.4.1)
+    - libextobjc/NSInvocation+EXT (= 0.4.1)
+    - libextobjc/NSMethodSignature+EXT (= 0.4.1)
+    - libextobjc/RuntimeExtensions (= 0.4.1)
+    - libextobjc/UmbrellaHeader (= 0.4.1)
+  - libextobjc/EXTADT (0.4.1):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTConcreteProtocol (0.4):
+  - libextobjc/EXTConcreteProtocol (0.4.1):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTKeyPathCoding (0.4):
+  - libextobjc/EXTKeyPathCoding (0.4.1):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTNil (0.4):
+  - libextobjc/EXTNil (0.4.1):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTSafeCategory (0.4):
+  - libextobjc/EXTSafeCategory (0.4.1):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTScope (0.4):
+  - libextobjc/EXTScope (0.4.1):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTSelectorChecking (0.4):
+  - libextobjc/EXTSelectorChecking (0.4.1):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTSynthesize (0.4):
+  - libextobjc/EXTSynthesize (0.4.1):
     - libextobjc/RuntimeExtensions
-  - libextobjc/NSInvocation+EXT (0.4):
+  - libextobjc/NSInvocation+EXT (0.4.1):
     - libextobjc/RuntimeExtensions
-  - libextobjc/NSMethodSignature+EXT (0.4):
+  - libextobjc/NSMethodSignature+EXT (0.4.1):
     - libextobjc/RuntimeExtensions
-  - libextobjc/RuntimeExtensions (0.4)
-  - libextobjc/UmbrellaHeader (0.4)
+  - libextobjc/RuntimeExtensions (0.4.1)
+  - libextobjc/UmbrellaHeader (0.4.1)
   - OCMock (2.2.4)
-  - ReactiveCocoa (2.1.4):
-    - ReactiveCocoa/Core (= 2.1.4)
-    - ReactiveCocoa/no-arc (= 2.1.4)
-  - ReactiveCocoa/Core (2.1.4):
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.1.4)
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
   - ReactiveViewModel (0.1.1):
     - ReactiveCocoa (~> 2.1)
   - Specta (0.2.1)
   - SVProgressHUD (1.0)
 
 DEPENDENCIES:
-  - 500px-iOS-api (= 1.0.5)
+  - 500px-iOS-api
   - AFImageDownloader (= 1.0.0)
   - Expecta (~> 0.2)
-  - libextobjc (= 0.4)
+  - libextobjc
   - OCMock (~> 2.2.2)
-  - ReactiveCocoa (= 2.1.4)
-  - ReactiveViewModel (= 0.1.1)
+  - ReactiveCocoa
+  - ReactiveViewModel (from `https://github.com/ashfurrow/ReactiveViewModel.git`,
+    tag `0.1.2`)
   - Specta (~> 0.2.1)
   - SVProgressHUD (= 1.0)
+
+EXTERNAL SOURCES:
+  ReactiveViewModel:
+    :git: https://github.com/ashfurrow/ReactiveViewModel.git
+    :tag: 0.1.2
+
+CHECKOUT OPTIONS:
+  ReactiveViewModel:
+    :git: https://github.com/ashfurrow/ReactiveViewModel.git
+    :tag: 0.1.2
 
 SPEC CHECKSUMS:
   500px-iOS-api: d9e46cb6300cef1a12964641374aa467d3cfb891
   AFImageDownloader: 90fe0794cc3577ff30ca7fbbab8cf19235578aa3
   Expecta: 78b4e8b0c8291fa4524d7f74016b6065c2e391ec
   Kiwi: 4e1a4bcc164fa7c8de649fe545c6d681c01b441c
-  libextobjc: f2802d4262f6885570df9799747409ceb1de602c
+  libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
   OCMock: a6a7dc0e3997fb9f35d99f72528698ebf60d64f2
-  ReactiveCocoa: 12072a1a4768b988f1f5a0a8c171c96bf021c2ff
-  ReactiveViewModel: 171492c2d30d3eb3c89730fd180c0f6a2ae7e774
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  ReactiveViewModel: 5d852269482387abd4e343cff4c05004967a0707
   Specta: 15a276a6343867b426d5ed135d5aa4d04123a573
   SVProgressHUD: 46088807596a795cbcb4affd92cf3f13b6ab3dda
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.38.2
