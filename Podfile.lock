@@ -59,9 +59,20 @@ DEPENDENCIES:
   - libextobjc
   - OCMock (~> 2.2.2)
   - ReactiveCocoa
-  - ReactiveViewModel (= 0.1.1)
+  - ReactiveViewModel (from `https://github.com/ashfurrow/ReactiveViewModel.git`,
+    tag `0.1.2`)
   - Specta (~> 0.2.1)
   - SVProgressHUD (= 1.0)
+
+EXTERNAL SOURCES:
+  ReactiveViewModel:
+    :git: https://github.com/ashfurrow/ReactiveViewModel.git
+    :tag: 0.1.2
+
+CHECKOUT OPTIONS:
+  ReactiveViewModel:
+    :git: https://github.com/ashfurrow/ReactiveViewModel.git
+    :tag: 0.1.2
 
 SPEC CHECKSUMS:
   500px-iOS-api: d9e46cb6300cef1a12964641374aa467d3cfb891
@@ -71,7 +82,7 @@ SPEC CHECKSUMS:
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
   OCMock: a6a7dc0e3997fb9f35d99f72528698ebf60d64f2
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  ReactiveViewModel: 171492c2d30d3eb3c89730fd180c0f6a2ae7e774
+  ReactiveViewModel: 5d852269482387abd4e343cff4c05004967a0707
   Specta: 15a276a6343867b426d5ed135d5aa4d04123a573
   SVProgressHUD: 46088807596a795cbcb4affd92cf3f13b6ab3dda
 

@@ -7,7 +7,7 @@ inhibit_all_warnings!
 target "FRP" do
 
 pod 'ReactiveCocoa'
-pod 'ReactiveViewModel', '0.1.1'
+pod 'ReactiveViewModel', tag: '0.1.2', git: 'https://github.com/ashfurrow/ReactiveViewModel.git'
 pod '500px-iOS-api'
 pod 'SVProgressHUD', '1.0'
 pod 'AFImageDownloader', '1.0.0'
