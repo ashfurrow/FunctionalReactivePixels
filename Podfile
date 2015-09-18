@@ -10,7 +10,7 @@ pod 'ReactiveCocoa'
 pod 'ReactiveViewModel', tag: '0.1.2', git: 'https://github.com/ashfurrow/ReactiveViewModel.git'
 pod '500px-iOS-api'
 pod 'SVProgressHUD', '1.0'
-pod 'AFImageDownloader', '1.0.0'
+pod 'AFImageDownloader'
 pod 'libextobjc'
 
 end

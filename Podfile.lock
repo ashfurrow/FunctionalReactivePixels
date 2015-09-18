@@ -1,9 +1,7 @@
 PODS:
   - 500px-iOS-api (1.0.5)
-  - AFImageDownloader (1.0.0):
-    - Kiwi (~> 1.1.1)
+  - AFImageDownloader (1.1.0)
   - Expecta (0.4.2)
-  - Kiwi (1.1.1)
   - libextobjc (0.4.1):
     - libextobjc/EXTADT (= 0.4.1)
     - libextobjc/EXTConcreteProtocol (= 0.4.1)
@@ -54,7 +52,7 @@ PODS:
 
 DEPENDENCIES:
   - 500px-iOS-api
-  - AFImageDownloader (= 1.0.0)
+  - AFImageDownloader
   - Expecta (~> 0.2)
   - libextobjc
   - OCMock (~> 2.2.2)
@@ -76,9 +74,8 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   500px-iOS-api: d9e46cb6300cef1a12964641374aa467d3cfb891
-  AFImageDownloader: 90fe0794cc3577ff30ca7fbbab8cf19235578aa3
+  AFImageDownloader: 98888db67fa2b3947b5e76f9015971eaa3cea9d5
   Expecta: 78b4e8b0c8291fa4524d7f74016b6065c2e391ec
-  Kiwi: 4e1a4bcc164fa7c8de649fe545c6d681c01b441c
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
   OCMock: a6a7dc0e3997fb9f35d99f72528698ebf60d64f2
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
@@ -86,4 +83,4 @@ SPEC CHECKSUMS:
   Specta: 15a276a6343867b426d5ed135d5aa4d04123a573
   SVProgressHUD: 46088807596a795cbcb4affd92cf3f13b6ab3dda
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0.beta.4
