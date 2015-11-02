@@ -329,6 +329,7 @@
 				5EBE2AEE180B07D0007B6BF3 /* Frameworks */,
 				5EBE2AEF180B07D0007B6BF3 /* Resources */,
 				E46E00988B20439593D30FC8 /* Copy Pods Resources */,
+				C1A6275438752999DB5F8165 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -348,6 +349,7 @@
 				5EBE2B0E180B07D0007B6BF3 /* Frameworks */,
 				5EBE2B0F180B07D0007B6BF3 /* Resources */,
 				B5CABB6140E74D3BB80B0D5A /* Copy Pods Resources */,
+				90433242350D2414CAED381D /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -443,6 +445,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		90433242350D2414CAED381D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FRPTests/Pods-FRPTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B5CABB6140E74D3BB80B0D5A /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -456,6 +473,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FRPTests/Pods-FRPTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1A6275438752999DB5F8165 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FRP/Pods-FRP-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E46E00988B20439593D30FC8 /* Copy Pods Resources */ = {

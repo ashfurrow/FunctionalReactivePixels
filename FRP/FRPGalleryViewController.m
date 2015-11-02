@@ -94,6 +94,7 @@ static NSString *CellIdentifier = @"Cell";
     }];
     
     // Need to "reset" the cached values of respondsToSelector: of UIKit
+    self.collectionView.delegate = nil;
     self.collectionView.delegate = self;
 }
 
