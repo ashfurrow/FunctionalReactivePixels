@@ -42,6 +42,10 @@
 			return nil;
 		}] subscribeOn:[RACScheduler scheduler]];
 	}] switchToLatest];
+    
+    [self.rac_prepareForReuseSignal subscribeNext:^(id x) {
+        self.imageView.image = nil;
+    }];
 	
     return self;
 }
